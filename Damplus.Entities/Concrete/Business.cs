@@ -17,7 +17,5 @@ namespace Damplus.Entities.Concrete
         public string SeoDescription { get; set; }
         public string SeoTags { get; set; }
         public string FileName { get; set; }
-        public int BusinessCategoryId { get; set; }
-        public BusinessCategory BusinessCategory { get; set; }
     }
 }

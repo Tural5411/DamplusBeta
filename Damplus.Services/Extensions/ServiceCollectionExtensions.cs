@@ -43,14 +43,11 @@ namespace Damplus.Services.Extensions
             serviceCollection.AddScoped<IArticleService, ArticleManager>();
             serviceCollection.AddScoped<ICommentService, CommentManager>();
             serviceCollection.AddScoped<IBusinessService, BusinessManager>();
-            serviceCollection.AddScoped<IBusinessCategoryService, BusinessCategoryManager>();
             serviceCollection.AddScoped<ITeamService, TeamManager>();
             serviceCollection.AddScoped<IProjectCategoryService, ProjectCategoryManager>();
             serviceCollection.AddScoped<IProjectService, ProjectManager>();
             serviceCollection.AddSingleton<IMailService, MailManager>();
             serviceCollection.AddScoped<IVideoService, VideoManager>();
-            serviceCollection.AddScoped<IBannerService, BannerManager>();
-            serviceCollection.AddScoped<IPriceService, PriceManager>();
             return serviceCollection;
         }
     }

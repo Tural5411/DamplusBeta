@@ -15,10 +15,12 @@ namespace Damplus.Entities.Concrete
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string Price { get; set; }
+        public string Location { get; set; }
         public string Info { get; set; }
         public string Description { get; set; }
         public string Photo { get; set; }
         public int ProjectCategoryId { get; set; }
         public ProjectCategory ProjectCategory { get; set; }
+        public ICollection<Photo> Images { get; set; }
     }
 }

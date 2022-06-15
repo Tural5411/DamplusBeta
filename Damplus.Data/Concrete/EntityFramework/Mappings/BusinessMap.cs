@@ -19,13 +19,10 @@ namespace Damplus.Data.Concrete.EntityFramework.Mappings
             builder.Property(b => b.Title).HasMaxLength(70).IsRequired();
             builder.Property(b => b.Content).HasMaxLength(300).IsRequired();
             builder.Property(b => b.SeoAuthor);
-            builder.Property(b => b.PID);
             builder.Property(b => b.SeoTags);
-            builder.Property(b => b.YoutubeLink);
             builder.Property(b => b.ThumbNail).HasMaxLength(500);
             builder.Property(b => b.SeoDescription).HasMaxLength(500);
             builder.Property(b => b.FileName);
-            builder.Property(b => b.Link).HasMaxLength(500);
             builder.Property(b => b.IsActive).IsRequired();
             builder.Property(b => b.IsDeleted).IsRequired();
             builder.Property(b => b.ModifiedByName).HasMaxLength(50).IsRequired();

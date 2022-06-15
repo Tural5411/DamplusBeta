@@ -61,9 +61,5 @@ namespace Damplus.Entities.DTOs
         [DisplayName("Silinib ?")]
         [Required(ErrorMessage = "{0} boş ola bilməz!")]
         public bool IsDeleted { get; set; }
-        [DisplayName("Kateqoriya")]
-        [Required(ErrorMessage = "{0} sahəsi boş ola bilməz")]
-        public int BusinessCategoryId { get; set; }
-        public BusinessCategory BusinessCategory { get; set; }
     }
 }

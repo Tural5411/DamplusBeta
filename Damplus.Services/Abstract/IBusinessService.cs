@@ -14,7 +14,6 @@ namespace Damplus.Services.Abstract
         Task<IDataResult<BusinessUpdateDto>> GetUpdateDto(int businessId);
         Task<IDataResult<BusinessListDto>> GetAll();
         Task<IDataResult<BusinessListDto>> GetAllByNonDeleteAndActive();
-        Task<IDataResult<BusinessListDto>> GetAllByCategory(int? categoryId);
         Task<IDataResult<BusinessDto>> Add(BusinessAddDto businessAddDto, string createdByName);
         Task<IDataResult<BusinessDto>> Update(BusinessUpdateDto businessUpdateDto, string modifiedByName);
         Task<IResult> HardDelete(int businessId);

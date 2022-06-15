@@ -10,10 +10,7 @@ namespace Damplus.Data.Abstract.UnitOfWorks
     {
         IArticleRepository Articles { get; }
         IVideoRepository Videos { get; }
-        IPriceRepository Prices { get; }
-        IBannerRepository Banners { get; }
         IBusinessRepository Business { get;}
-        IBusinessCategoryRepository  BusinessCategories {get;}
         ICategoryRepository Categories { get; }
         ICommentRepository Comments { get; }  //_unitOfWork.Categories.AddAsync()
         IProjectRepository Projects { get; }

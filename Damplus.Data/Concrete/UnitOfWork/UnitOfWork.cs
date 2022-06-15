@@ -19,11 +19,8 @@ namespace Damplus.Data.Concrete.UnitOfWork
         private  ProjectRepository _projectRepository;
         private  ProjectCategoryRepository _projectCategoryRepository;
         private  BusinessRepository _businessRepository;
-        private BusinessCategoryRepository _businessCategoryRepository;
         private  TeamRepository _teamRepository;
-        private BannerRepository _bannerRepository;
         private VideoRepository _videoRepository;
-        private PriceRepository _priceRepository;
     
         public UnitOfWork(DamplusContext context)
         {
@@ -44,12 +41,6 @@ namespace Damplus.Data.Concrete.UnitOfWork
         public ITeamRepository Teams => _teamRepository ??= new TeamRepository(_context);
 
         public IVideoRepository Videos => _videoRepository ??= new VideoRepository(_context);
-
-        public IBannerRepository Banners => _bannerRepository ??= new BannerRepository(_context);
-
-        public IBusinessCategoryRepository BusinessCategories => _businessCategoryRepository ??= new BusinessCategoryRepository(_context);
-
-        public IPriceRepository Prices => _priceRepository ??= new PriceRepository(_context);
 
         public async ValueTask DisposeAsync()
         {

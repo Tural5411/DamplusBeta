@@ -2,7 +2,8 @@ using AutoMapper;
 using Damplus.Entities.Concrete;
 using Damplus.Mvc.Areas.Admin.Helpers.Abstract;
 using Damplus.Mvc.Areas.Admin.Helpers.Concrete;
-//using Damplus.Mvc.AutoMapper.Profiles;
+using Damplus.Mvc.AutoMapper.Profiles;
+using Damplus.Mvc.AutoMapper.Profiles;
 using Damplus.Services.AutoMapper.Profiles;
 using Damplus.Services.Extensions;
 using Damplus.Shared.Utilities.Extensions;
@@ -76,7 +77,7 @@ namespace Damplus.Mvc
             }).AddNToastNotifyToastr();
 
             services.AddSession();
-            services.AddAutoMapper(typeof(CategoryProfile),/*typeof(PriceProfile), typeof(ArticleProfile),typeof(BannerProfile), typeof(UserProfile), typeof(CommentProfile), typeof(ViewModelsProfile), typeof(BusinessProfile),typeof(BusinessCategoryProfile), typeof(TeamProfile),*/ typeof(ProjectCategoryProfile), typeof(ProjectProfile));
+            services.AddAutoMapper(typeof(CategoryProfile), typeof(ArticleProfile), typeof(UserProfile), typeof(CommentProfile), typeof(ViewModelsProfile), typeof(BusinessProfile), typeof(TeamProfile), typeof(ProjectCategoryProfile), typeof(ProjectProfile));
             services.LoadMyServices(connectionString: Configuration["Data:DefaultConnection:ConnectionString"]);
             //services.LoadMyServices(connectionString: Configuration.GetConnectionString("LocalDB"));
 

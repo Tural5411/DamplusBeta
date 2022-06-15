@@ -147,30 +147,5 @@ namespace Damplus.Services.Concrete
             }
             return new DataResult<BusinessListDto>(ResultStatus.Error, Messages.Business.NotFound(isPlural: true), null);
         }
-        public async Task<IDataResult<BusinessListDto>> GetAllByCategory(int? categoryId)
-        {
-            var result = await _unitOfWork.Business.AnyAsync(a => a.Id == categoryId);
-            var booleanResult = Convert.ToBoolean(result);
-            if (booleanResult)
-            {
-                var businesses = await _unitOfWork.Business.GetAllAsync(a => a.BusinessCategoryId == categoryId &&
-                !a.IsDeleted && a.IsActive,a => a.BusinessCategory);
-                if (businesses.Count > -1)
-                {
-                    return new DataResult<BusinessListDto>(ResultStatus.Succes, new BusinessListDto
-                    {
-                        Businesses = businesses,
-                        ResultStatus = ResultStatus.Succes
-                    });
-                }
-                return new DataResult<BusinessListDto>(ResultStatus.Error, new BusinessListDto
-                {
-                    Businesses = null,
-                    ResultStatus = ResultStatus.Error,
-                    Message = Messages.Article.NotFound(isPlural: true)
-                });
-            }
-            return new DataResult<BusinessListDto>(ResultStatus.Error, message: Messages.Article.NotFound(false), null);
-        }
     }
 }

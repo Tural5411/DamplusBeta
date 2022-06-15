@@ -24,18 +24,16 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
     public class BusinessController : BaseController
     {
         private readonly IBusinessService _businessService;
-        private readonly IBusinessCategoryService _businessCategoryService;
         private readonly IToastNotification _toastNotification;
         private readonly IFileHelper _fileHelper;
         [Obsolete]
         private IHostingEnvironment _environment;
 
 
-        public BusinessController(IFileHelper fileHelper, IHostingEnvironment environment, IBusinessCategoryService businessCategoryService,IBusinessService businessService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
+        public BusinessController(IFileHelper fileHelper, IHostingEnvironment environment,IBusinessService businessService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
         {
             _businessService = businessService;
             _toastNotification = toastNotification;
-            _businessCategoryService = businessCategoryService;
             _fileHelper = fileHelper;
             _environment = environment;
         }
@@ -48,15 +46,7 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-            var result = await _businessCategoryService.GetAllByNonDeleteAndActive();
-            if (result.ResultStatus == ResultStatus.Succes)
-            {
-                return View(new BusinessAddViewModel
-                {
-                    Categories = result.Data.BusinessCategories
-                });
-            }
-            return NotFound();
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> Add(BusinessAddViewModel businessAddViewModel)
@@ -91,11 +81,9 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int businessId)
         {
             var result = await _businessService.GetUpdateDto(businessId);
-            var categoriesResult = await _businessCategoryService.GetAllByNonDeleteAndActive();
             if (result.ResultStatus == ResultStatus.Succes)
             {
                 var businessUpdateViewModel = Mapper.Map<BusinessUpdateViewModel>(result.Data);
-                businessUpdateViewModel.BusinessCategories = categoriesResult.Data.BusinessCategories;
                 return View(businessUpdateViewModel);
             }
             return NotFound();
@@ -127,7 +115,6 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
                     businessUpdateViewModel.Link = pdfResult.Data.FullName;
                 }
                 var businessUpdateDto = Mapper.Map<BusinessUpdateDto>(businessUpdateViewModel);
-                businessUpdateDto.BusinessCategoryId = 5;
                 var result = await _businessService.Update(businessUpdateDto, "Damplus");
                 
                 if (result.ResultStatus == ResultStatus.Succes)
@@ -148,8 +135,6 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
                     ModelState.AddModelError("", result.Message);
                 }
             }
-            var categories = await _businessCategoryService.GetAllByNonDeleteAndActive();
-            businessUpdateViewModel.BusinessCategories = categories.Data.BusinessCategories;
             return View(businessUpdateViewModel);
         }
         [HttpPost]

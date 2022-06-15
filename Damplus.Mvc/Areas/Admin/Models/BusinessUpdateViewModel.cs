@@ -57,8 +57,5 @@ namespace Damplus.Mvc.Areas.Admin.Models
         [DisplayName("Silinib ?")]
         [Required(ErrorMessage = "{0} boş ola bilməz!")]
         public bool IsDeleted { get; set; }
-        [DisplayName("Kateqoriya")]
-        public int BusinessCategoryId { get; set; }
-        public IList<BusinessCategory> BusinessCategories { get; set; }
     }
 }

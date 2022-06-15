@@ -49,9 +49,6 @@ namespace Damplus.Entities.DTOs
         [MaxLength(150, ErrorMessage = "{0} sahəsi {1} dən böyük ola bilməz")]
         [MinLength(1, ErrorMessage = "{0} sahəsi {1} dən kiçik ola bilməz")]
         public string SeoTags { get; set; }
-        [DisplayName("Youtube Link")]
-        [MinLength(1, ErrorMessage = "{0} sahəsi {1} dən kiçik ola bilməz")]
-        public string YoutubeLink { get; set; }
         
         [DisplayName("Aktivdir ?")]
         [Required(ErrorMessage = "{0} boş ola bilməz!")]
@@ -59,9 +56,5 @@ namespace Damplus.Entities.DTOs
         [DisplayName("Silinib ?")]
         [Required(ErrorMessage = "{0} boş ola bilməz!")]
         public bool IsDeleted { get; set; }
-        [DisplayName("Kateqoriya")]
-        [Required(ErrorMessage = "{0} sahəsi boş ola bilməz")]
-        public int BusinessCategoryId { get; set; }
-        public BusinessCategory BusinessCategory { get; set; }
     }
 }

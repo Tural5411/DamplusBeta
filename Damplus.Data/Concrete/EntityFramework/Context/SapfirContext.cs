@@ -14,11 +14,8 @@ namespace Damplus.Data.Concrete.EntityFramework.Context
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectCategory> ProjectCategories { get; set; }
-        public DbSet<BusinessCategory> Businesses { get; set; }
         public DbSet<Teams> Teams { get; set; }
-        public DbSet<Price> Prices { get; set; }
         public DbSet<Video> Videos { get; set; }
-        public DbSet<BusinessCategory> BusinessCategories { get; set; }
         public DamplusContext(DbContextOptions<DamplusContext> options) : base(options)
         {
         }
@@ -35,22 +32,15 @@ namespace Damplus.Data.Concrete.EntityFramework.Context
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new RoleMap());
-            modelBuilder.ApplyConfiguration(new PriceMap());
             modelBuilder.ApplyConfiguration(new UserTokenMap());
             modelBuilder.ApplyConfiguration(new UserRoleMap());
             modelBuilder.ApplyConfiguration(new UserLoginMap());
             modelBuilder.ApplyConfiguration(new RoleClaimMap());
             modelBuilder.ApplyConfiguration(new UserClaimMap());
-            modelBuilder.ApplyConfiguration(new BusinessCategoryMap());
             modelBuilder.ApplyConfiguration(new TeamMap());
             modelBuilder.ApplyConfiguration(new ProjectCategoryMap());
             modelBuilder.ApplyConfiguration(new ProjectMap());
             modelBuilder.ApplyConfiguration(new LogMap());
-
-            modelBuilder.Entity<Business>()
-            .HasOne<Price>(s => s.Price)
-            .WithOne(ad => ad.Business)
-            .HasForeignKey<Price>(ad => ad.BusinessId);
         }
     }
 }
