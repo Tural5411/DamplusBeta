@@ -1,0 +1,103 @@
+﻿@model Damplus.Entities.DTOs.ArticleListDto
+@using Damplus.Shared.Utilities.Results.ComplexTypes
+@{ Layout = "_Layout";
+    ViewBag.Title = "Article Index"; }
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 as class="page-header">Admin - Meqaleler</h1>
+        @*<p class="page-subtitle">Buradan yeni kateqoriya yarada, editləyə və silə bilərsiniz.</p>*@
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a href="/Admin">Admin</a></li>
+    <li class="active">Meqale</li>
+</ol>
+
+<div id="modalPlaceHolder" aria-hidden="true"></div>
+<div class="row">
+    <div class="col-md-12 card">
+        @if (Model.ResultStatus == ResultStatus.Succes)
+        {
+<table class="table no-footer dataTable dtr-inline" id="articleTables">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Başlıq</th>
+            <th>Kateqoriya</th>
+            <th>Tarix</th>
+            <th>Şəkil</th>
+            <th>Yazar</th>
+            <th>Baxış</th>
+            <th>Aktivdirmi ?</th>
+            <th>Silinibmi ?</th>
+            <th>Əməliyyatlar</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Başlıq</th>
+            <th>Kateqoriya</th>
+            <th>Tarix</th>
+            <th>Şəkil</th>
+            <th>Yazar</th>
+            <th>Baxış</th>
+            <th>Aktivdirmi ?</th>
+            <th>Silinibmi ?</th>
+            <th>Əməliyyatlar</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var article in Model.Articles)
+        {
+        <tr class="odd" name="@article.Id">
+            <td>@article.Id</td>
+            <td>@article.Title</td>
+            <td>@article.Category.Name</td>
+            <td>@article.Date.ToShortDateString()</td>
+            <td><img src="~/img/@article.ThumbNail" class="my-image-table" alt="@article.Title" /></td>
+            <td>@article.User.UserName</td>
+            <td>@article.ViewsCount</td>
+            <td>@(article.IsActive ? "Bəli" : "Xeyr")</td>
+            <td>@(article.IsDeleted ? "Bəli" : "Xeyr")</td>
+            <td class="text-center">
+                <a class="btn btn-primary btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Article" asp-action="Update" asp-route-articleId="@article.Id"><span class="fas fa-edit"></span> </a>
+                <button class="btn btn-danger btn-sm btn-delete" data-id="@article.Id"><span class="fas fa-minus-circle"></span> </button>
+            </td>
+        </tr>}
+    </tbody>
+</table> }
+else if (Model.ResultStatus == ResultStatus.Error)
+{
+<div class="alert alert-danger">
+    <h3>@Model.Message</h3>
+    <p>Dashboarda qayıtmaq üçün <a asp-area="Admin" asp-controller="Home" asp-action="Index">Tıklayın</a></p>
+</div>}
+        <button class="btn btn-primary btnUpdate" type="button" disabled style="display:none;">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Yüklənir...
+        </button>
+    </div>
+</div>
+
+<!-- JavaScript -->
+@section Scripts{
+    <script src="~/js/crud/article/articleIndex.js" type="application/ecmascript"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnAdd").click(function () {
+                window.location.href = '@Url.Action("Add","Article")';
+            })
+           
+        });
+        
+    </script>
+}
+@section Styles{ 
+
+}

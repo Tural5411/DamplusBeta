@@ -1,0 +1,47 @@
+﻿@model Damplus.Mvc.Areas.Admin.Models.BannerUpdateViewModel
+@{ Layout = "_Layout";
+    ViewBag.Title = "Banner Update"; }
+
+<!-- CSS only -->
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin - Doğru Bilinən Yanlışlar</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="active"><a asp-area="Admin" asp-action="Index" asp-controller="Business">Doğru Bilinən Yanlışlar</a></li>
+    <li><a asp-area="Admin" asp-action="Add" asp-controller="Banner">Əlavə Et</a></li>
+</ol>
+
+<form asp-action="Update" enctype="multipart/form-data" method="post" id="form-team-update">
+    <input type="hidden" name="IsValid" value="@ViewData.ModelState.IsValid.ToString()" />
+    <div asp-validation-summary="All" style="display:none;" class="text-danger" id="validation-summary" aria-hidden="true">
+    </div>
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input class="form-control" asp-for="Title" />
+        <span class="text-danger" asp-validation-for="Title"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+        <label asp-for="IsActive" class="form-check-label"></label>
+        <span class="text-danger" asp-validation-for="IsActive"></span>
+    </div>
+    <div class="form-group">
+        <a asp-action="Index" asp-controller="Banner" asp-area="Admin" class="btn btn-danger btn-block"><span class="fas fa-times"></span> Ləğv Et</a>
+        <button type="submit" class="btn btn-primary btn-block" id="btnSave"><span class="fas fa-save"></span>Yadda Saxla</button>
+    </div>
+</form>
+

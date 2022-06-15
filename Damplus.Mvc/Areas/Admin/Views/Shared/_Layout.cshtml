@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Damplus - Admin</title>
+    @await Html.PartialAsync("_LayoutCssPartial")
+    <!-- Custom CSS -->
+    <link href="~/css/adminnine.css" rel="stylesheet">
+    @RenderSection("Styles", false)
+</head>
+<body>
+    <div id="wrapper">
+        @*@await Html.PartialAsync("~/Areas/Admin/Views/Shared/AdminMenu/Default.cshtml")*@
+        @await Component.InvokeAsync("AdminMenu") 
+        <!-- /.navbar-static-side -->
+
+        <div id="page-wrapper">
+            <div class="row">
+                <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
+                    <ul class="nav navbar-top-links navbar-right">
+                        @await Component.InvokeAsync("Notification")
+
+                        
+                        <!-- /.dropdown -->
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle userdd" data-toggle="dropdown" href="javascript:void(0)">
+                                    <div class="userprofile small ">
+                                        <span class="userpic"> <img src="~/img/Damplus logo 2 (1).jpeg" alt="" class="userpicimg"> </span>
+                                        <div class="textcontainer">
+                                            <h3 class="username">@User.Identity.Name</h3>
+                                            <p>Xoş gəldiniz</p>
+                                        </div>
+                                    </div>
+                                    <i class="caret"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li> <a asp-action="ChangeDetails" asp-controller="User" asp-area="Admin"><i class="fa fa-user fa-fw"></i> Şəxsi məlumatlar</a> </li>
+                                    <li> <a asp-action="PasswordChange" asp-controller="User" asp-area="Admin"><i class="fa fa-gear fa-fw"></i> Şifrəni dəyiş</a> </li>
+                                    <li> <a asp-action="Logout" asp-controller="Auth" asp-area="Admin"><i class="fa fa-sign-out fa-fw"></i> Çıxış</a> </li>
+                                </ul>
+                                <!-- /.dropdown-user -->
+                            </li>
+                        }
+
+                        <!-- /.dropdown -->
+                    </ul>
+                    <!-- /.navbar-top-links -->
+
+                </nav>
+            </div>
+            <!--<div class="row">
+            <div class="col-md-12  header-wrapper">
+                <h1 class="page-header">Dashboard</h1>
+                <p class="page-subtitle">This is amazing template for all type of admin interfaces.</p>
+            </div>-->
+            <!-- /.col-lg-12 -->
+            <!--</div>-->
+            <!-- /.row -->
+            <!--<ol class="breadcrumb">
+            <li><a href="javascript:void(0)">Admin9</a></li>
+            <li class="active">Dashboard</li>
+        </ol>-->
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success mt-2" role="alert">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            @RenderBody()
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+   @await Html.PartialAsync("_LayoutJsPartial") 
+   @await RenderSectionAsync("Scripts",false)
+  
+</body>
+</html>

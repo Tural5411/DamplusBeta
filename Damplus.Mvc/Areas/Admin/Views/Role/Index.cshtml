@@ -1,0 +1,64 @@
+﻿@model Damplus.Entities.DTOs.RoleListDto
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Rollar";
+}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin - Rol</h1>
+        <p class="page-subtitle">Burada  rol  editləyə və silə bilərsiniz.</p>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a></li>
+    <li class="active"><a asp-area="Admin" asp-controller="Rol" asp-action="Index">Rollar</a></li>
+</ol>
+
+<div id="modalPlaceHolder" aria-hidden="true"></div>
+<div class="card mb-4">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="rolesTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rol Adı</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Rol Adı</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var rol in Model.Roles)
+                    {
+                        <tr name="@rol.Id">
+                            <td>@rol.Id</td>
+                            <td>
+                                @rol.Name
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/js/crud/role/roleIndex.js" type="application/ecmascript"></script>
+}
+@section Styles
+{
+
+}

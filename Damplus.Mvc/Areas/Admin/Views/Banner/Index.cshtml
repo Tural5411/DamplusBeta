@@ -1,0 +1,190 @@
+﻿@model Damplus.Entities.DTOs.BannerListDto
+@using Damplus.Shared.Utilities.Results.ComplexTypes
+@{ Layout = "_Layout";
+    ViewBag.Title = "Banner Index"; }
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin - Doğru Bilinən Yanlışlarər</h1>
+        <p class="page-subtitle">Buradan yeni sual yarada, editləyə və silə bilərsiniz.</p>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li class="active"><a asp-area="Admin" asp-action="Index" asp-controller="Business">Doğru Bilinən Yanlışlar</a></li>
+    <li><a asp-area="Admin" asp-action="Add" asp-controller="Banner">Əlavə Et</a></li>
+</ol>
+
+
+<div id="modalPlaceHolder" aria-hidden="true"></div>
+<div class="row">
+    <div class="col-md-12 card">
+        <table class="table no-footer dataTable dtr-inline" id="dataTables">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Başlıq</th>
+                    <th>Aktiv</th>
+                    <th>Silinib</th>
+                    <th>Tarix</th>
+                    <th>İstifadəçi Adı</th>
+                    <th>Son Edit Tarixi</th>
+                    <th>Son Editləyən İstifadəçi Adı</th>
+                    <th>Əməliyyatlar</th>
+                </tr>
+
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Başlıq</th>
+                    <th>Aktiv</th>
+                    <th>Silinib</th>
+                    <th>Tarix</th>
+                    <th>İstifadəçi Adı</th>
+                    <th>Son Edit Tarixi</th>
+                    <th>Son Editləyən İstifadəçi Adı</th>
+                    <th>Əməliyyatlar</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var business in Model.Banners)
+                {
+
+    <tr class="odd" name="@business.Id">
+        <td>@business.Id</td>
+        <td>@business.Title</td>
+        <td class="center"><span class="status active">@(business.IsActive ? "Bəli" : "Xeyr")</span></td>
+        <td class="center"><span class="status active">@(business.IsDeleted ? "Bəli" : "Xeyr" )</span></td>
+        <td class="center">@business.CreatedDate.ToShortDateString()</td>
+        <td class="center">@business.CreatedByName</td>
+        <td class="center">@business.ModifiedDate.ToShortDateString()</td>
+        <td class="center">@business.ModifiedByName</td>
+        <td class="text-center">
+            <a asp-action="Update" asp-controller="Banner" asp-route-bannerId="@business.Id" class="btn btn-primary btn-sm btn-block @*btn-update*@" data-id="@business.Id"><span class="fas fa-edit"></span> </a>
+            <button class="btn btn-danger btn-sm btn-delete btn-block" data-id="@business.Id"><span class="fas fa-minus-circle"></span> </button>
+        </td>
+    </tr>
+}
+            </tbody>
+        </table>
+        <input  type="submit" class="form-control btn-success"  value="Ana Sehifede Goster"/>
+
+               
+    </div>
+</div>
+
+<!-- JavaScript -->
+@section Scripts{
+<script>
+    $(document).ready(function () {
+        //DataTable Start from Here
+        $('#dataTables').DataTable({
+            dom: "<'row'<'col-sm-3'l><'col-sm-6 text-center'B><'col-sm-3'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+            buttons: [
+                {
+
+                    text: 'ƏLAVƏ ET',
+                    attr: {
+                        id: "btnAdd"
+                    },
+                    className: 'btn btn-success',
+                    action: function (e, dt, node, config) {
+                        let url = window.location.href;
+                        url = url.replace("/Index", "");
+                        window.open(`${url}/Add`, "_self");
+                    }
+                }
+            ],
+            "language": {
+                "sEmptyTable": "Cədvəldə heç bir məlumat yoxdur",
+                "sInfo": " _TOTAL_ Nəticədən _START_ - _END_ Arası Nəticələr",
+                "lengthMenu": "Səhifədə _MENU_ Nəticə Göstər",
+                "sZeroRecords": "Nəticə Tapılmadı.",
+                "sInfoEmpty": "Nəticə Yoxdur",
+                "sInfoFiltered": "( _MAX_ Nəticə İçindən Tapılanlar)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Yüklənir...",
+                "sProcessing": "Gözləyin...",
+                "sSearch": "Axtarış:",
+                "sZeroRecords": "Nəticə Tapılmadı.",
+                "oPaginate": {
+                    "sFirst": "İlk",
+                    "sLast": "Axırıncı",
+                    "sNext": "Sonraki",
+                    "sPrevious": "Öncəki"
+                },
+
+                "oAria": {
+                    "sSortAscending": ": sütunu artma sırası üzərə aktiv etmək",
+                    "sSortDescending": ": sütunu azalma sırası üzərə aktiv etmək"
+                }
+
+            },
+            "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+            "Paginate": true,
+            "bLengthChange": true,
+            "bFilter": true,
+            "bSort": false,
+            "bInfo": true,
+            "bAutoWidth": false,
+            "placeholder": " ",
+        });
+    });
+    //DataTables End from Here
+
+    $(document).on('click', '.btn-delete', function (event) {
+        event.preventDefault();
+        const id = $(this).attr('data-id');
+        const tableRow = $(`[name="${id}"]`);
+        const articleTitle = tableRow.find('td:eq(1)').text(); //2 = 2ci indexe sahib deyeri al
+        Swal.fire({
+            title: 'Silmək istədiyinizdən əminsiniz?',
+            text: `${articleTitle} adlı sual-cavab silinəcəkdir!`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Bəli, silmək istəyirəm.',
+            cancelButtonText: 'Xeyr, silmək istəmirəm.'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { bannerId: id },
+                    url: '/Admin/Banner/Delete/',
+                    success: function (data) {
+                        const articleResult = jQuery.parseJSON(data);
+                        if (articleResult.ResultStatus === 0) {
+                            Swal.fire(
+                                'Sual-cavab silindi!',
+                                `${articleResult.Message}`,
+                                'success'
+                            );
+                            datatable.row(tableRow).remove().draw();
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Xəta Baş Verdi...',
+                                text: `${articleResult.Message}`,
+                            });
+                        };
+                    },
+                    error: function (err) {
+                        toastr.error(`${err.responseText}`, "Xeta");
+                    }
+                });
+            };
+        });
+    });
+    //Ajax POST / Deleting a User ends from here
+</script>
+}

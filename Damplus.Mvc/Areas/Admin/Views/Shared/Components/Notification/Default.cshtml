@@ -1,0 +1,18 @@
+﻿@model Damplus.Mvc.Areas.Admin.Models.NotificationViewModel
+
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"> <i class="fa fa-envelope fa-fw"></i><span class="count">@Model.Count.ToString()+</span> </a>
+        <ul class="dropdown-menu dropdown-messages">
+            @foreach (var item in Model.Comments)
+            {
+                <li>
+                    <a href="javascript:void(0)">
+                        <div> <strong>@item.CreatedByName</strong> <span class="pull-right text-muted"> <em>@item.CreatedDate.ToShortDateString()</em> </span> </div>
+                        <div>@item.Text...</div>
+                    </a>
+                </li>
+            }
+            <li> <a class="text-center" asp-action="Index" asp-controller="Comment"> <strong>Bütün Şərhlərə Bax</strong> <i class="fa fa-angle-right"></i> </a> </li>
+        </ul>
+        <!-- /.dropdown-messages -->
+    </li>

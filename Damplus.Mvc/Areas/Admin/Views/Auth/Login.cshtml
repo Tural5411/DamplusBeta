@@ -1,0 +1,42 @@
+﻿@model Damplus.Entities.DTOs.UserLoginDto
+@{ 
+    ViewBag.Title = "Giriş";
+    Layout = "_UserLoginLayout";
+}
+<div class="col-md-4 col-md-offset-4">
+    <div class="login-panel panel panel-default">
+        <div class="userpic"><img src="~/img/userlogin.png" alt=""></div>
+        <div class="panel-body">
+            <h2 class="text-center">Daxil Ol</h2>
+            <form asp-controller="Auth" asp-action="Login" method="post">
+                
+                <fieldset>
+                    <div class="form-group">
+                        <input class="form-control" asp-for="Email"  type="email" autofocus>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" asp-for="Password" type="password">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input  type="checkbox" asp-for="RememberMe">
+                            Xatırla Məni
+                        </label>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Daxil Ol</button>
+                    <br />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </fieldset>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 "><a href="forgotpassword.html">Şifrəni Unutmusan?</a> </div>
+                    <div class="col-md-6  text-right"> <a href="register.html">Qeydiyyat!</a> </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

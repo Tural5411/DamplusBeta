@@ -1,0 +1,107 @@
+﻿@model Damplus.Entities.DTOs.ProjectListDto
+@using Damplus.Shared.Utilities.Results.ComplexTypes
+@{ Layout = "_Layout";
+    ViewBag.Title = "project Index"; }
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin - Proyektler</h1>
+        @*<p class="page-subtitle">Buradan yeni kateqoriya yarada, editləyə və silə bilərsiniz.</p>*@
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a href="/Admin">Admin</a></li>
+    <li class="active">Proyektler</li>
+</ol>
+
+<div id="modalPlaceHolder" aria-hidden="true"></div>
+<div class="row">
+    <div class="col-md-12 card">
+        @if (Model.ResultStatus == ResultStatus.Succes)
+        {
+<table class="table no-footer dataTable dtr-inline" id="projectTables">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Proyekt Ad</th>
+            <th>Kateqoriya</th>
+            <th>Tarix</th>
+            <th>Şəkil</th>
+            <th>Klent</th>
+            <th>Qiymet</th>
+            <th>Təhvil</th>
+            <th>Aktivdirmi ?</th>
+            <th>Silinibmi ?</th>
+            <th>Əməliyyatlar</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr >
+            <th>ID</th>
+            <th>Proyekt Ad</th>
+            <th>Kateqoriya</th>
+            <th>Tarix</th>
+            <th>Şəkil</th>
+            <th>Klent</th>
+            <th>Qiymet</th>
+            <th>Təhvil</th>
+            <th>Aktivdirmi ?</th>
+            <th>Silinibmi ?</th>
+            <th>Əməliyyatlar</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var project in Model.Projects)
+        {
+        <tr class="odd" name="@project.Id">
+            <td>@project.Id</td>
+            <td>@project.Name</td>
+            <td>@project.ProjectCategory.Name</td>
+            <td>@project.CreatedDate.ToShortDateString()</td>
+            <td><img src="~/img/@project.Photo" class="my-image-table" alt="@project.Name" /></td>
+            <td>@project.Client</td>
+            <td>@project.Price azn</td>
+            <td>@project.EndDate</td>
+            <td>@(project.IsActive ? "Bəli" : "Xeyr")</td>
+            <td>@(project.IsDeleted ? "Bəli" : "Xeyr")</td>
+            <td class="text-center">
+                <a class="btn btn-primary btn-sm" data-id="@project.Id" asp-area="Admin" asp-controller="Project" asp-action="Update" asp-route-projectId="@project.Id"><span class="fas fa-edit"></span> </a>
+                <button class="btn btn-danger btn-sm btn-delete" data-id="@project.Id"><span class="fas fa-minus-circle"></span> </button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> }
+else if (Model.ResultStatus == ResultStatus.Error)
+{
+<div class="alert alert-danger">
+    <h3>@Model.Message</h3>
+    <p>Dashboarda qayıtmaq üçün <a asp-area="Admin" asp-controller="Home" asp-action="Index">Tıklayın</a></p>
+</div>}
+        <button class="btn btn-primary btnUpdate" type="button" disabled style="display:none;">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Yüklənir...
+        </button>
+    </div>
+</div>
+
+<!-- JavaScript -->
+@section Scripts{
+    <script src="~/js/crud/project/projectIndex.js" type="application/ecmascript"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnAdd").click(function () {
+                window.location.href = '@Url.Action("Add","Project")';
+            })
+
+        });
+
+    </script>
+}
+@section Styles{
+
+}

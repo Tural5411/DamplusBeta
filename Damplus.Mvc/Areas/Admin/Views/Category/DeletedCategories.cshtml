@@ -1,0 +1,83 @@
+﻿@model Damplus.Entities.DTOs.CategoryListDto
+@{ Layout = "_Layout";
+    ViewBag.Title = "Categories Index"; }
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin - Silinmiş Kateqoriyalar</h1>
+        <p class="page-subtitle">Buradan yeni kateqoriya geri qaytara,editləyə və silə bilərsiniz.</p>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a href="/Admin">Admin</a></li>
+    <li class="active">Silinmiş Kateqoriyalar</li>
+</ol>
+
+<div id="modalPlaceHolder" aria-hidden="true"></div>
+<div class="row">
+    <div class="col-md-12 card">
+<table class="table no-footer dataTable dtr-inline" id="deletedCategoriesTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Adı</th>
+            <th>Açıqlama</th>
+            <th>Aktiv</th>
+            <th>Silinib</th>
+            <th>Tarix</th>
+            <th>İstifadəçi Adı</th>
+            <th>Son Edit Tarixi</th>
+            <th>Son Editləyən İstifadəçi Adı</th>
+            <th>Əməliyyatlar</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Adı</th>
+            <th>Açıqlama</th>
+            <th>Aktiv</th>
+            <th>Silinib</th>
+            <th>Tarix</th>
+            <th>İstifadəçi Adı</th>
+            <th>Son Edit Tarixi</th>
+            <th>Son Editləyən İstifadəçi Adı</th>
+            <th>Əməliyyatlar</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var category in Model.Categories)
+        {
+<tr class="odd" name="@category.Id">
+    <td>@category.Id</td>
+    <td>@category.Name</td>
+    <td>@category.Description</td>
+    <td class="center"><span class="status active">@(category.IsActive ? "Bəli" : "Xeyr")</span></td>
+    <td class="center"><span class="status active">@(category.IsDeleted ? "Bəli" : "Xeyr" )</span></td>
+    <td class="center">@category.CreatedDate.ToShortDateString()</td>
+    <td class="center">@category.CreatedByName</td>
+    <td class="center">@category.ModifiedDate.ToShortDateString()</td>
+    <td class="center">@category.ModifiedByName</td>
+    <td class="text-center">
+        <button class="btn btn-warning btn-sm btn-block btn-undo" data-id="@category.Id"><span class="fas fa-undo"></span> </button>
+        <button class="btn btn-danger btn-sm btn-block btn-delete" data-id="@category.Id"><span class="fas fa-minus-circle"></span> </button>
+    </td>
+</tr>
+}
+    </tbody>
+</table> 
+        <button class="btn btn-primary btnUpdate" type="button" disabled style="display:none;">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Yüklənir...
+        </button>
+    </div>
+</div>
+
+<!-- JavaScript -->
+@section Scripts{
+    <script src="~/js/crud/category/deletedCategories.js" type="application/ecmascript"></script>
+}

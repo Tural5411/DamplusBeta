@@ -1,0 +1,38 @@
+﻿@model Damplus.Entities.Concrete.SliderPageInfo
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Slider Edit";
+
+}
+<div class="row">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="card mt-1 mb-1">
+            <div class="card-header">
+                <h4 class="text-center"><span class="fas fa-edit"></span> Slider Edit</h4>
+            </div>
+            <div class="card-body">
+                <form asp-area="Admin" asp-controller="Option" asp-action="Slider" method="post" id="form-emailsettings-update">
+                    <div asp-validation-summary="All" class="text-danger" id="validation-summary"></div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label asp-for="Header"></label>
+                            <input class="form-control" asp-for="Header" placeholder="Zehmet olmasa Basligi yazin." />
+                            <span class="text-danger" asp-validation-for="Header"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label asp-for="Content"></label>
+                            <input type="text" class="form-control" asp-for="Content" placeholder="Zehmet olmasa metni yazin." />
+                            <span class="text-danger" asp-validation-for="Content"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary"><span class="fas fa-save"></span> Yadda Saxla</button>
+                            <a class="btn btn-danger" asp-area="Admin" asp-controller="Home" asp-action="Index"><span class="fas fa-times"></span> Legv Et</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

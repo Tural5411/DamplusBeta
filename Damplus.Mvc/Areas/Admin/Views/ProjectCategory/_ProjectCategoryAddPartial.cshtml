@@ -1,0 +1,40 @@
+﻿@model Damplus.Entities.DTOs.ProjectCategoryAddDto
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span class="fas fa-plus"></span> Proyekt Kateqoriya Əlavə Et</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Ləğv Et">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Add" id="form-projectcategory-add">
+                    <input type="hidden" name="IsValid" value="@ViewData.ModelState.IsValid.ToString()"/>
+                    <div asp-validation-summary="All" style="display:none;" class="text-danger" id="validation-summary" aria-hidden="true">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input class="form-control" asp-for="Name" />
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description"></label>
+                        <input class="form-control" asp-for="Description" />
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+                        <label  asp-for="IsActive" class="form-check-label"></label>
+                        <span class="text-danger" asp-validation-for="IsActive"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"><span class="fas fa-times"></span> Ləğv Et</button>
+                <button type="button" class="btn btn-primary btn-block" id="btnSave"><span class="fas fa-save"></span>Yadda Saxla</button>
+            </div>
+        </div>
+    </div>
+</div>

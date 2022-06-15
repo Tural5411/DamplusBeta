@@ -1,0 +1,47 @@
+﻿@model Damplus.Mvc.Areas.Admin.Models.VideoAddViewModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin - Videolar</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li><a asp-area="Admin" asp-action="Index" asp-controller="Article">Videolar</a></li>
+    <li class="active"><a asp-area="Admin" asp-action="Add" asp-controller="Video">Elave Et</a></li>
+</ol>
+
+<form asp-action="Add" asp-controller="Videos" method="post" enctype="multipart/form-data" id="form-video-add">
+    <input type="hidden" name="IsValid" value="@ViewData.ModelState.IsValid.ToString()" />
+    <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input class="form-control" asp-for="Title" />
+        <span class="text-danger" asp-validation-for="Title"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Link"></label>
+        <input class="form-control" asp-for="Link" />
+        <span class="text-danger" asp-validation-for="Link"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PictureFile"></label>
+        <input type="file" class="form-control-file" asp-for="PictureFile" />
+        <span class="text-danger" asp-validation-for="PictureFile"></span>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+        <label asp-for="IsActive" class="form-check-label"></label>
+        <span class="text-danger" asp-validation-for="IsActive"></span>
+    </div>
+    <div class="form-group">
+        <a asp-action="Index" asp-controller="Video" asp-area="Admin" class="btn btn-danger btn-block"><span class="fas fa-times"></span> Ləğv Et</a>
+        <button type="submit" class="btn btn-primary btn-block"><span class="fas fa-save"></span>Yadda Saxla</button>
+    </div>
+</form>

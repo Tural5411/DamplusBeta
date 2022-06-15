@@ -1,0 +1,132 @@
+﻿@model Damplus.Mvc.Areas.Admin.Models.ProjectAddViewModel
+@{
+    ViewBag.Title = "Proyekt Elave Et";
+}
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin - Proyektler</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a asp-area="Admin" asp-action="Index" asp-controller="Home">Admin</a></li>
+    <li><a asp-area="A" asp-action="Index" asp-controller="Article">Proyektler</a></li>
+    <li class="active"><a asp-area="Admin" asp-action="Add" asp-controller="Project">Elave Et</a></li>
+</ol>
+
+<form asp-action="Add" asp-controller="Project" method="post" enctype="multipart/form-data">
+    <div class="row mt-2">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input class="form-control" id="articleTitle" asp-for="Name" />
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description"></label>
+                        <textarea class="form-control" id="text-editor" asp-for="Description"></textarea>
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Vacib əməliyyatlar
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="categoryList" asp-for="ProjectCategoryId"></label>
+                        <select asp-for="ProjectCategoryId" asp-items="@(new SelectList(Model.ProjectCategories,"Id","Name"))" id="categoryList" class="form-control">
+                            <option></option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="ProjectCategoryId"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Date"></label>
+                        <input type="text" id="datapicker" class="form-control" value="@DateTime.Now.ToShortDateString()" asp-for="Date" />
+                        <span class="text-danger" asp-validation-for="Date"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="thumbnailUpload" asp-for="Photo"></label>
+                        <input type="file" accept="image/*" id="thumbnailUpload" class="form-control-file" asp-for="Photo" placeholder="Zəhmət Olmasa Şəkil seçin" />
+                        <span class="text-danger" asp-validation-for="Photo"></span>
+                    </div>
+                    <div class="form-check">
+                        <label asp-for="IsActive" for="isActive" class="form-check-label"></label>
+                        <input type="checkbox" id="isActive" class="form-check-input" asp-for="IsActive" />
+                        <span class="text-danger" asp-validation-for="IsActive"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" id="submit" class="btn btn-info btn-block">Yadda Saxla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-2">
+            <div class="card">
+                <div class="card-header">
+                    Seo Emeliyyatlar
+                </div>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="seoWriter" asp-for="StartDate"></label>
+                            <input type="text" class="form-control" id="seoWriter" asp-for="StartDate" />
+                            <span class="text-danger" asp-validation-for="StartDate"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="seoTags" asp-for="EndDate"></label>
+                            <input type="text" class="form-control" id="seoTags" asp-for="EndDate" />
+                            <span class="text-danger" asp-validation-for="EndDate"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="seoDescription" asp-for="Info"></label>
+                            <textarea class="form-control" id="seoDescription" asp-for="Info"></textarea>
+                            <span class="text-danger" asp-validation-for="Info"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="seoTags" asp-for="Price"></label>
+                            <input type="text" class="form-control" id="seoTags" asp-for="Price" />
+                            <span class="text-danger" asp-validation-for="Price"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="seoTags" asp-for="Client"></label>
+                            <input type="text" class="form-control" id="seoTags" asp-for="Client" />
+                            <span class="text-danger" asp-validation-for="Client"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script src="~/vendor/datatables/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/trumbowyg.min.js" integrity="sha512-t4CFex/T+ioTF5y0QZnCY9r5fkE8bMf9uoNH2HNSwsiTaMQMO0C9KbKPMvwWNdVaEO51nDL3pAzg4ydjWXaqbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/langs/tr.min.js" integrity="sha512-+HGzdrYvtA0U9cp5kJad8OpjTvUi6ywZ9z9kXFGiV3EaAR1II5X6lfulUm6/F9GKesHW+jHFfAqwXK0juybvMw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/colors/trumbowyg.colors.min.js" integrity="sha512-4QranVVhd9HLb3yDUL6q+zlHc5mEIcUrR5pfhdyyGzsqcH9vSROL0BgN8wW47mZ1tZ44tUvFkk/JXvhfNlzvHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/pasteembed/trumbowyg.pasteembed.min.js" integrity="sha512-cc99fAVMJJomU5mEXMh5qrkcMTE9ekk+l1fBDPi2fsECAGKvLMAR11FZJQFr2HL3SvfQWWqvLKYZIbips4TJUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/resizimg/trumbowyg.resizimg.min.js" integrity="sha512-ZFWCpQ44IAcwGKAV1TSNslN5jZBbLOanbtKXGpi/EDwW7HGAYbueYKe8JzwxkZ048btwFX+18O/d3TrRx8+jzA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/lineheight/trumbowyg.lineheight.min.js" integrity="sha512-OFUipl73huXFm3oTQxm5vk+LM8aW10Ccm/O0usQh+0Xsi3f4cbJIcsuQiGrRKYYyuhM+yqcDTvTVgayg/Z4gQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/fontsize/trumbowyg.fontsize.min.js" integrity="sha512-eYBhHjpFi6wk8wWyuXYYu54CRcXA3bCFSkcrco4SR1nGtGSedgAXbMbm3l5X4IVEWD8U7Pur9yNjzYu8n4aIMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/fontfamily/trumbowyg.fontfamily.min.js" integrity="sha512-ha/jXUX4sZMHEvpHLtYOIvMDK8/a8ncRhAPSmQVUx/to+04w+zUBWWZHaPQMPt6qjx94V/lbE9ZEsTsb7F+sTw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/emoji/trumbowyg.emoji.min.js" integrity="sha512-PPEK09bmt7tQg/qdNokvbckNVB4EqXTu+qi4X/j9XoFag6YspjU5xO/FXXCEjBxo1+Z41oOFvIyz5QkjSuTNsQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="~/js/crud/article/articleAdd.js"></script>
+}
+@section Styles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/ui/trumbowyg.min.css" integrity="sha512-nwpMzLYxfwDnu68Rt9PqLqgVtHkIJxEPrlu3PfTfLQKVgBAlTKDmim1JvCGNyNRtyvCx1nNIVBfYm8UZotWd4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/colors/ui/trumbowyg.colors.min.css" integrity="sha512-aE073TwNBnCl/Y99fSlH/29MS7CzKgrliM9rTVDURKiiGvapXN+hTmept74zsbcadVEzJ2RtfcyEyzySiYeJuA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/emoji/ui/trumbowyg.emoji.min.css" integrity="sha512-xpR3G7LZbpAnoUgES2Xu2Z/mK8NwejLjJpNHQtmdU36yGP2AS5kgpflPwv6vEurEeruDcghOtHkWNsOkwVx2ig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/css/select2-bootstrap4.min.css" rel="stylesheet" />
+}

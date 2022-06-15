@@ -1,0 +1,126 @@
+﻿@model Damplus.Mvc.Areas.Admin.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin Panel</h1>
+        <p class="page-subtitle">Buradan saytdakı bütün məlumatları editləyə,silə və əlavə edə bilərsiniz.</p>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a href="javascript:void(0)">Damplus</a></li>
+    <li class="active">Admin Panel</li>
+</ol>
+
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-3 col-sm-6">
+        <div class="panel panel-blue">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div id="morris-bar-chart2"></div>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <div class="huge">@Model.CommentCount</div>
+                        <div>Şərhlər!</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-area="Admin" asp-controller="Comment" asp-action="Index">
+                <div class="panel-footer">
+                    <span class="pull-left">Ətraflı</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3"> <i class="fa fa-tasks fa-2x"></i> </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.ArticleCount</div>
+                        <div>Məqalələr!</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-area="Admin" asp-controller="Article" asp-action="Index">
+                <div class="panel-footer">
+                    <span class="pull-left">Ətraflı</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3"> <i class="fa fa-shopping-cart fa-2x"></i> </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.CategoryCount</div>
+                        <div>Kateqoriyalar!</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-area="Admin" asp-controller="Category" asp-action="Index">
+                <div class="panel-footer">
+                    <span class="pull-left">Ətraflı</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3"> <i class="fa fa-support fa-2x"></i> </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@Model.UserCount</div>
+                        <div>İstifadəçilər!</div>
+                    </div>
+                </div>
+            </div>
+            <a asp-area="Admin" asp-controller="User" asp-action="Index">
+                <div class="panel-footer">
+                    <span class="pull-left">Ətraflı</span> <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Ən çox oxunan məqalələr grafikası
+                <div class="pull-right">
+                </div>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <canvas id="viewCountChart" width="100"></canvas>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-8 -->
+</div>
+
+@section Scripts{ 
+    <script src="~/js/crud/home/homeIndex.js" type="application/ecmascript"></script>
+}  
