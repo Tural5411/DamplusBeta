@@ -9,6 +9,7 @@ namespace Damplus.Data.Abstract.UnitOfWorks
     public interface IUnitOfWork : IAsyncDisposable
     {
         IArticleRepository Articles { get; }
+        IPhotoRepository Photos { get; }
         IVideoRepository Videos { get; }
         IBusinessRepository Business { get;}
         ICategoryRepository Categories { get; }

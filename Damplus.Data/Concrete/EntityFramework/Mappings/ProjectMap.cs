@@ -18,6 +18,7 @@ namespace Damplus.Data.Concrete.EntityFramework.Mappings
 
             builder.Property(p => p.Name).HasMaxLength(70).IsRequired();
             builder.Property(p => p.Info).IsRequired();
+            builder.Property(p => p.Location);
             builder.Property(p => p.Price).HasMaxLength(10).IsRequired();
             builder.Property(p => p.StartDate).HasMaxLength(50).IsRequired();
             builder.Property(p => p.EndDate).HasMaxLength(50).IsRequired();

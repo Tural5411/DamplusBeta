@@ -8,7 +8,7 @@ namespace Damplus.Data.Concrete.EntityFramework.Context
     public class DamplusContext : IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
         public DbSet<Article> Articles { get; set; }
-        public DbSet<Banner> Banners { get; set; }
+        public DbSet<Business> Business{ get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -28,6 +28,7 @@ namespace Damplus.Data.Concrete.EntityFramework.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ArticleMap());
+            modelBuilder.ApplyConfiguration(new BusinessMap());
             modelBuilder.ApplyConfiguration(new CommentMap());
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new CategoryMap());

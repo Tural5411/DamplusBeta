@@ -14,6 +14,7 @@ namespace Damplus.Data.Concrete.UnitOfWork
     {
         private readonly DamplusContext _context;
         private  ArticleRepository _articleRepository;
+        private  PhotoRepository   _photoRepository;
         private  CommentRepository _commentRepository;
         private  CategoryRepository _categoryRepository;
         private  ProjectRepository _projectRepository;
@@ -41,6 +42,8 @@ namespace Damplus.Data.Concrete.UnitOfWork
         public ITeamRepository Teams => _teamRepository ??= new TeamRepository(_context);
 
         public IVideoRepository Videos => _videoRepository ??= new VideoRepository(_context);
+
+        public IPhotoRepository Photos => _photoRepository ??= new PhotoRepository(_context);
 
         public async ValueTask DisposeAsync()
         {
