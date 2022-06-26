@@ -29,6 +29,20 @@ namespace Damplus.Mvc.Areas.Admin.Helpers.Concrete
             _wwwroot = _env.WebRootPath;
         }
 
+
+        public async Task<string> UploadImageV2(IFormFile file)
+        {
+            string wwwRootPath = _env.WebRootPath;
+            string fileName = Path.GetFileNameWithoutExtension(file.FileName);
+            string extension = Path.GetExtension(file.FileName);
+            var name = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            string path = Path.Combine(wwwRootPath + "/img/", fileName);
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+            return name;
+        }
         public IDataResult<ImageDeletedDto> ImageDelete(string PictureName)
         {
 

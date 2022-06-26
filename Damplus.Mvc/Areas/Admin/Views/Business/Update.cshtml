@@ -58,16 +58,16 @@
                         <input type="file" accept="image/*" id="thumbnailUpload" class="form-control-file" asp-for="PictureFile" placeholder="Zəhmət Olmasa Şəkil seçin" />
                         <span class="text-danger" asp-validation-for="PictureFile"></span>
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label for="thumbnail" asp-for="Link">Hal-hazırdakı PDF</label>
                         <input type="hidden" id="thumbnail" asp-for="Link" />
                         <a class="btn btn-primary btn-warning" asp-area="Admin" asp-controller="Business" asp-action="DownloadFile" asp-route-filePath="@Model.Link"><span class="fas fa-download"></span></a>
-                    </div>
-                    <div class="form-group">
+                    </div>*@
+                    @*<div class="form-group">
                         <label for="thumbnailUpload" asp-for="PdfFile">Yeni PDF Yüklə</label>
                         <input type="file"  id="thumbnailUpload" class="form-control-file" asp-for="PdfFile" placeholder="Zəhmət Olmasa pdf seçin" />
                         <span class="text-danger" asp-validation-for="PdfFile"></span>
-                    </div>
+                    </div>*@
                     <div class="form-check">
                         <label asp-for="IsActive" for="isActive" class="form-check-label"></label>
                         <input type="checkbox" id="isActive" class="form-check-input" asp-for="IsActive" />

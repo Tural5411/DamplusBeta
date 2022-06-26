@@ -19,6 +19,9 @@ namespace Damplus.Mvc.AutoMapper.Profiles
             CreateMap<TeamAddViewModel, TeamAddDto>();
             CreateMap<TeamAddDto, TeamAddViewModel>();
 
+
+            CreateMap<PhotoAddDto, PhotoAddViewModel>().ReverseMap();
+
             CreateMap<TeamUpdateViewModel, TeamUpdateDto>();
             CreateMap<TeamUpdateDto, TeamUpdateViewModel>();
 

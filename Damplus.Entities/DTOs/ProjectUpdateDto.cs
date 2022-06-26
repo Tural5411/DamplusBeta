@@ -22,6 +22,11 @@ namespace Damplus.Entities.DTOs
         [MaxLength(70, ErrorMessage = "{0} {1} - dən böyük ola bilməz!")]
         [MinLength(3, ErrorMessage = "{0} {1} - dən az ola bilməz!")]
         public string Client { get; set; }
+        [DisplayName("Ərazi")]
+        [Required(ErrorMessage = "{0} adı boş ola bilməz!")]
+        [MaxLength(90, ErrorMessage = "{0} {1} - dən böyük ola bilməz!")]
+        [MinLength(3, ErrorMessage = "{0} {1} - dən az ola bilməz!")]
+        public string Location { get; set; }
         [DisplayName("Başlama Tarixi")]
         [Required(ErrorMessage = "{0} adı boş ola bilməz!")]
         [MaxLength(40, ErrorMessage = "{0} {1} - dən böyük ola bilməz!")]

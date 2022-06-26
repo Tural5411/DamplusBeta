@@ -48,6 +48,7 @@ namespace Damplus.Services.Extensions
             serviceCollection.AddScoped<IProjectService, ProjectManager>();
             serviceCollection.AddSingleton<IMailService, MailManager>();
             serviceCollection.AddScoped<IVideoService, VideoManager>();
+            serviceCollection.AddScoped<IPhotoService, PhotoManager>();
             return serviceCollection;
         }
     }

@@ -13,6 +13,8 @@ namespace Damplus.Mvc.Areas.Admin.Helpers.Abstract
     {
         //string UploadImage(string name, 
         //    IFormFile pictureFile,PictureType pictureType, string folderName=null);
+
+        Task<string> UploadImageV2(IFormFile file);
         Task<IDataResult<ImageUploadedDto>> UploadImage(string name,
             IFormFile pictureFile, PictureType pictureType, string folderName = null);
         IDataResult<ImageDeletedDto> ImageDelete(string PictureName);

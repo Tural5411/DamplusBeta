@@ -70,5 +70,9 @@ namespace Damplus.Mvc.Areas.Admin.Models
         [Required(ErrorMessage = "{0} sahəsi boş ola bilməz")]
         public int ProjectCategoryId { get; set; }
         public IList<ProjectCategory> ProjectCategories { get; set; }
+        public IFormFileCollection ProjectPhotos { get; set; }
+        public IList<PhotoAddViewModel> Photos { get; set; }
+        public IList<Photo> Images { get; set; }
+
     }
 }

@@ -59,6 +59,12 @@
                         <input type="file" accept="image/*" id="thumbnailUpload" class="form-control-file" asp-for="Photo" placeholder="Zəhmət Olmasa Şəkil seçin" />
                         <span class="text-danger" asp-validation-for="Photo"></span>
                     </div>
+                    <div class="form-group">
+                        <label for="thumbnailUpload" asp-for="ProjectPhotos"></label>
+                        <input type="file" accept="image/*" multiple id="thumbnailUpload" class="form-control-file" asp-for="ProjectPhotos" placeholder="Zəhmət Olmasa Şəkil seçin" />
+                        <span class="text-danger" asp-validation-for="ProjectPhotos"></span>
+                    </div>
+                    
                     <div class="form-check">
                         <label asp-for="IsActive" for="isActive" class="form-check-label"></label>
                         <input type="checkbox" id="isActive" class="form-check-input" asp-for="IsActive" />

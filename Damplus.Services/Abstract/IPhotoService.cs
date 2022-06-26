@@ -12,9 +12,9 @@ namespace Damplus.Services.Abstract
     public interface IPhotoService
     {
         //All Service Methods Are Async!
-        Task<IDataResult<ArticleDto>> Get(int articleId);
-        Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAndActive();
-        Task<IResult> Add(ArticleAddDto articleAddDto, string createdByName);
-        Task<IResult> HardDelete(int articleId);
+        Task<IDataResult<PhotoDto>> Get(int photoId);
+        Task<IDataResult<PhotoListDto>> GetAllByNonDeletedAndActive();
+        Task<IResult> Add(PhotoAddDto photoAddDto, string createdByName);
+        Task<IResult> HardDelete(int photoId);
     }
 }

@@ -77,7 +77,7 @@ namespace Damplus.Mvc
             }).AddNToastNotifyToastr();
 
             services.AddSession();
-            services.AddAutoMapper(typeof(CategoryProfile), typeof(ArticleProfile), typeof(UserProfile), typeof(CommentProfile), typeof(ViewModelsProfile), typeof(BusinessProfile), typeof(TeamProfile), typeof(ProjectCategoryProfile), typeof(ProjectProfile));
+            services.AddAutoMapper(typeof(CategoryProfile), typeof(ArticleProfile),typeof(PhotoProfile), typeof(UserProfile), typeof(CommentProfile), typeof(ViewModelsProfile), typeof(BusinessProfile), typeof(TeamProfile), typeof(ProjectCategoryProfile), typeof(ProjectProfile));
             services.LoadMyServices(connectionString: Configuration["Data:DefaultConnection:ConnectionString"]);
             //services.LoadMyServices(connectionString: Configuration.GetConnectionString("LocalDB"));
 
