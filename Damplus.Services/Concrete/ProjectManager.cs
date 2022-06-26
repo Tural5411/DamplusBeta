@@ -113,7 +113,7 @@ namespace Damplus.Services.Concrete
 
         public async Task<IDataResult<ProjectListDto>> GetAll()
         {
-            var Projects =await _unitOfWork.Projects.GetAllAsync(null);
+            var Projects =await _unitOfWork.Projects.GetAllAsync(null,x=>x.ProjectCategory);
             if (Projects.Count>-1)
             {
                 return new DataResult<ProjectListDto>(ResultStatus.Succes,new ProjectListDto 

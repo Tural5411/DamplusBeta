@@ -16,60 +16,7 @@
                 action: function (e, dt, node, config) {
 
                 }
-            },
-            {
-                text: 'P.Kateqoriya Yenilə',
-                className: 'btn btn-warning',
-                action: function (e, dt, node, config) {
-                    $.ajax({
-                        type: 'GET',
-                        url: '/Admin/ProjectCategory/GetAllCategories/',
-                        contentType: "application/json",
-                        beforeSend: function () {
-                            $('#dataTables').hide();
-                            $('.btnUpdate').show();
-                        },
-                        success: function (data) {
-                            const ProjectCategoryListDto = jQuery.parseJSON(data);
-                            if (ProjectCategoryListDto.ResultStatus === 0) {
-                                let tableBody = "";
-                                $.each(ProjectCategoryListDto.Categories.$values,
-                                    function (index, ProjectCategory) {
-                                        tableBody += `
-                                                <tr name=${ProjectCategory.Id}>
-                                                        <td>${ProjectCategory.Id}</td>
-                                                        <td>${ProjectCategory.Name}</td>
-                                                        <td>${ProjectCategory.Description}</td>
-                                                        <td class="center"><span class="status active">${ProjectCategory.IsActive ? "Bəli" : "Xeyr"}</span></td>
-                                                        <td class="center"><span class="status active">${ProjectCategory.IsDeleted ? "Bəli" : "Xeyr"}</span></td>
-                                                        <td class="center">${ProjectCategory.CreatedDate}</td>
-                                                        <td class="center">${ProjectCategory.CreatedByName}</td>
-                                                        <td class="center">${ProjectCategory.ModifiedDate}</td>
-                                                        <td class="center">${ProjectCategory.ModifiedByName}</td>
-                                                        <td>${ProjectCategory.Note}</td>
-                                                        <td class="text-center">
-                                                             <button class="btn btn-primary btn-sm btn-update" data-id="${ProjectCategory.Id}"><span class="fas fa-edit"></span> Edit</button>
-                                                             <button class="btn btn-danger btn-sm btn-delete" data-id="${ProjectCategory.Id}"><span class="fas fa-minus-circle"></span> Sil</button>
-                                                        </td>
-                                                    </tr>
-                                                 `
-                                    });
-                                $('#dataTables > tbody').replaceWith(tableBody);
-                                $('.btnUpdate').hide();
-                                $('#dataTables').fadeIn(1500);
-                            } else {
-                                toastr.error(`${ProjectCategoryListDto.Message}`, "Xeta Bas verdi");
-                            }
-                        },
-                        error: function (err) {
-                            $('.btnUpdate').hide();
-                            $('#dataTables').fadeIn(1000);
-                            toastr.error(`${err.responseText}`, "Xeta!");
-                        }
-                    });
-                }
             }
-
         ],
         "language": {
             "sEmptyTable": "Cədvəldə heç bir məlumat yoxdur",

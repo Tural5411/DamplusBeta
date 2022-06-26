@@ -18,69 +18,6 @@
                     url = url.replace("/Index", "");
                     window.open(`${url}/Add`,"_self");
                 }
-            },
-            {
-                text: 'Yenilə',
-                className: 'btn btn-warning',
-                action: function (e, dt, node, config) {
-                    $.ajax({
-                        type: 'GET',
-                        url: '/Admin/Project/GetAllArticles/',
-                        contentType: "application/json",
-                        beforeSend: function () {
-                            $('#articleTables').hide();
-                            $('.btnUpdate').show();
-                        },
-                        success: function (data) {
-                            const articleResult = jQuery.parseJSON(data);
-                            datatable.clear();
-                            if (articleResult.Data.ResultStatus === 0) {
-                                let categoriesArray = [];
-                                $.each(articleResult.Data.Articles.$values,
-                                    function (index, article) {
-                                        const newArticle = getJsonNetObject(article, articleResult.Data.Articles.$values);
-                                        let newCategory = getJsonNetObject(newArticle.Category, newArticle);
-                                        if (newCategory !== null) {
-                                            categoriesArray.push(newCategory);
-                                        }
-                                        if (newCategory === null) {
-                                            newCategory = categoriesArray.find((category) => {
-                                                return category.$id === newArticle.Category.$ref;
-                                            });
-                                        }
-                                        console.log(newCategory);
-                                        const newTableRow = datatable.row.add([
-                                            newArticle.Id,
-                                            newArticle.Title,
-                                            newCategory.Name,
-                                            newArticle.Date,
-                                            `<img src="/img/${newArticle.Thumbnail}" class="my-image-table" alt="${newArticle.Title}" />`,
-                                            newArticle.CreatedByName,
-                                            newArticle.ViewCount,
-                                            newArticle.IsActive,
-                                            newArticle.IsDeleted,
-                                            `<td class="text-center">
-                                                <button class="btn btn-primary btn-sm btn-update" data-id="${newArticle.Id}"><span class="fas fa-edit"></span> </button>
-                                                <button class="btn btn-danger btn-sm btn-delete" data-id="${newArticle.Id}"><span class="fas fa-minus-circle"></span> </button>
-                                            </td>`
-                                        ]).node();
-                                        const jqueryTableRow = $(newTableRow);//Jquery obyektine cevirdiy
-                                        jqueryTableRow.attr('name', `${newArticle.Id}`);
-                                    });
-                                datatable.draw();
-                                $('.btnUpdate').hide();
-                                $('#articleTables').fadeIn(1500);
-                            } else {
-                                toastr.error(`${articleResult.Message}`, "Xeta Bas verdi");
-                            }
-                        },
-                        error: function (err) {
-                            $('.btnUpdate').hide();
-                            $('#articleTables').fadeIn(1000);
-                            toastr.error(`${err.responseText}`, "Xeta!");
-                        }
-                    });
-                }
             }
 
         ],

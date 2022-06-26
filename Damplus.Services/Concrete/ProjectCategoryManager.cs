@@ -26,16 +26,16 @@ namespace Damplus.Services.Concrete
         }
         public async Task<IDataResult<ProjectCategoryDto>> Add(ProjectCategoryAddDto ProjectCategoryAddDto, string createdByName)
         {
-            var ProjectCategory = _mapper.Map<ProjectCategory>(ProjectCategoryAddDto);
-            ProjectCategory.CreatedByName = createdByName;
-            ProjectCategory.ModifiedByName = createdByName;
-            var addedProjectCategory=await _unitOfWork.ProjectCategories.AddAsync(ProjectCategory);
-            await _unitOfWork.SaveAsync();
-            return new DataResult<ProjectCategoryDto>(ResultStatus.Succes, Messages.ProjectCategory.Add(addedProjectCategory.Name), new ProjectCategoryDto
+                var ProjectCategory = _mapper.Map<ProjectCategory>(ProjectCategoryAddDto);
+                ProjectCategory.CreatedByName = createdByName;
+                ProjectCategory.ModifiedByName = createdByName;
+                var addedProjectCategory = await _unitOfWork.ProjectCategories.AddAsync(ProjectCategory);
+                await _unitOfWork.SaveAsync();
+                return new DataResult<ProjectCategoryDto>(ResultStatus.Succes, Messages.ProjectCategory.Add(addedProjectCategory.Name), new ProjectCategoryDto
                 {
                     ProjectCategory = addedProjectCategory,
-                    ResultStatus=ResultStatus.Succes,
-                    Message= Messages.ProjectCategory.Add(addedProjectCategory.Name)
+                    ResultStatus = ResultStatus.Succes,
+                    Message = Messages.ProjectCategory.Add(addedProjectCategory.Name)
                 });
         }
 

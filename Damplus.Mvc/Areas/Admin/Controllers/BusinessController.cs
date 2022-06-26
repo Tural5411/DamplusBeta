@@ -145,12 +145,12 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
             var deletedBusiness = JsonSerializer.Serialize(result);
             return Json(deletedBusiness);
         }
-        [Obsolete]
-        public IActionResult DownloadFile(string filePath)
-        {
-            string path = Path.Combine(this._environment.WebRootPath, "files/") + filePath;
-            byte[] bytes = System.IO.File.ReadAllBytes(path);
-            return File(bytes, "application/octet-stream", filePath);
-        }
+        //[Obsolete]
+        //public IActionResult DownloadFile(string filePath)
+        //{
+        //    string path = Path.Combine(this._environment.WebRootPath, "files/") + filePath;
+        //    byte[] bytes = System.IO.File.ReadAllBytes(path);
+        //    return File(bytes, "application/octet-stream", filePath);
+        //}
     }
 }

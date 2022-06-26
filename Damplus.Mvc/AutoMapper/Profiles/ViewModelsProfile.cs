@@ -23,6 +23,7 @@ namespace Damplus.Mvc.AutoMapper.Profiles
             CreateMap<TeamUpdateDto, TeamUpdateViewModel>();
 
             CreateMap<ProjectAddViewModel, ProjectAddDto>();
+            CreateMap<ProjectUpdateViewModel, ProjectUpdateDto>().ReverseMap();
             CreateMap<BusinessAddViewModel, BusinessAddDto>();
             CreateMap<BusinessUpdateDto, BusinessUpdateViewModel>();
             CreateMap<BusinessUpdateViewModel, BusinessUpdateDto>();

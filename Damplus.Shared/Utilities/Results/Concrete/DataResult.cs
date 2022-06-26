@@ -11,7 +11,7 @@ namespace Damplus.Shared.Utilities.Results.Concrete
 {
     public class DataResult<T> : IDataResult<T>
     {
-        public DataResult(ResultStatus resultStatus,T data)
+        public DataResult(ResultStatus resultStatus, T data)
         {
             ResultStatus = resultStatus;
             Data = data;

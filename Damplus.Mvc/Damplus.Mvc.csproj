@@ -52,4 +52,8 @@
     <ProjectReference Include="..\Damplus.Services\Damplus.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>

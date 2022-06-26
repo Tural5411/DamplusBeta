@@ -75,5 +75,61 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
             projectAddViewModel.ProjectCategories = projectcategories.Data.ProjectCategories;
             return View(projectAddViewModel);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Update(int projectId)
+        {
+            var projectResult = await _projectService.GetUpdateDto(projectId);
+            var categoriesResult = await _projectCategoryService.GetAllByNonDeleteAndActive();
+            if (projectResult.ResultStatus == ResultStatus.Succes && categoriesResult.ResultStatus == ResultStatus.Succes)
+            {
+                var projectUpdateViewModel = Mapper.Map<ProjectUpdateViewModel>(projectResult.Data);
+                projectUpdateViewModel.ProjectCategories = categoriesResult.Data.ProjectCategories;
+                return View(projectUpdateViewModel);
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(ProjectUpdateViewModel projectUpdateViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                bool isNewThumbnailUploaded = false;
+                var oldThumbnail = projectUpdateViewModel.Photo;
+                if (projectUpdateViewModel.PhotoFile != null)
+                {
+                    var uploadedImageResult = await ImageHelper.UploadImage(projectUpdateViewModel.Name,
+                        projectUpdateViewModel.PhotoFile, PictureType.Post);
+                    projectUpdateViewModel.Photo = uploadedImageResult.ResultStatus
+                        == ResultStatus.Succes ? uploadedImageResult.Data.FullName
+                        : "postImages/defaultThumbnail.jpg";
+                    if (oldThumbnail != "postImages/defaultThumbnail.jpg")
+                    {
+                        isNewThumbnailUploaded = true;
+                    }
+                }
+                var articleUpdateDto = Mapper.Map<ProjectUpdateDto>(projectUpdateViewModel);
+                var result = await _projectService.Update(articleUpdateDto, LoggedInUser.UserName);
+                if (result.ResultStatus == ResultStatus.Succes)
+                {
+                    if (isNewThumbnailUploaded)
+                    {
+                        ImageHelper.ImageDelete(oldThumbnail);
+                    }
+                    _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions
+                    {
+                        Title = "Uğurlu əməliyyat",
+                        CloseButton = true
+                    });
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.Message);
+                }
+            }
+            var categories = await _projectCategoryService.GetAllByNonDeleteAndActive();
+            projectUpdateViewModel.ProjectCategories = categories.Data.ProjectCategories;
+            return View(projectUpdateViewModel);
+        }
     }
 }

@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace Damplus.Mvc.Areas.Admin.Models
 {
-    public class ProjectAddViewModel
+    public class ProjectUpdateViewModel
     {
+        [Required]
+        public int Id { get; set; }
         [DisplayName("Proyekt Adı")]
         [Required(ErrorMessage = "{0} adı boş ola bilməz!")] //{O} = Kateqoriya Adı
         [MaxLength(70, ErrorMessage = "{0} {1} - dən böyük ola bilməz!")] //{1} = 70
@@ -53,9 +55,11 @@ namespace Damplus.Mvc.Areas.Admin.Models
         [Required(ErrorMessage = "{0} adı boş ola bilməz!")]
         [MinLength(20, ErrorMessage = "{0} {1} - dən az ola bilməz!")]
         public string Description { get; set; }
+        [DisplayName("Şəkil seç")]
+        public IFormFile PhotoFile { get; set; }
         [DisplayName("Şəkil")]
         [Required(ErrorMessage = "{0} sahəsi boş ola bilməz")]
-        public IFormFile Photo { get; set; }
+        public string Photo { get; set; }
         [DisplayName("Aktivdir ?")]
         [Required(ErrorMessage = "{0} boş ola bilməz!")]
         public bool IsActive { get; set; }

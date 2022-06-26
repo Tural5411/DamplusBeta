@@ -22,11 +22,19 @@
                 <a asp-area="Admin" asp-controller="Option" asp-action="Slider"><i class="fas fa-newspaper"></i> İlk yazılar<span class="badge"></span></a>
             </li>
             <li>
+                <a asp-area="Admin" asp-controller="Option" asp-action="About"><i class="fas fa-tools"></i> Haqqımızda<span class="badge"></span></a>
+            </li>
+            <li>
                 <a asp-area="Admin" asp-controller="Business" asp-action="Index" class="menudropdown"><i class="fas fa-th-list"></i> Xidmətlər</a>
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a asp-area="Admin" asp-controller="Price" asp-action="Index" class="menudropdown"><i class="far fa-newspaper"></i> Xidmətlərin Qiyməti<span class="badge">@*12*@</span></a>
+                <a asp-area="Admin" asp-controller="Project" asp-action="Index" class="menudropdown"><i class="fas fa-th-list"></i> Proyektlər</a>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="ProjectCategory" asp-action="Index" class="menudropdown"><i class="fas fa-th-list"></i> Proyekt kateqoriyaları</a>
+                <!-- /.nav-second-level -->
             </li>
             <li>
                 <a asp-area="Admin" asp-controller="Option" asp-action="Choose"><i class="fas fa-address-card"></i> Niyə Biz<span class="badge"></span></a>
@@ -34,10 +42,10 @@
             <li>
                 <a asp-area="Admin" asp-controller="Option" asp-action="PriceSmm"><i class="fas fa-th-list"></i> Endirimlər<span class="badge"></span></a>
             </li>
-            <li>
-                <a asp-area="Admin" asp-controller="Videos" asp-action="Index" class="menudropdown"><i class="fas fa-th-list"></i> Videolar<span class="badge red"></span></a>
-                <!-- /.nav-second-level -->
-            </li>
+            <!--<li>
+        <a asp-area="Admin" asp-controller="Videos" asp-action="Index" class="menudropdown"><i class="fas fa-th-list"></i> Videolar<span class="badge red"></span></a>-->
+            <!-- /.nav-second-level -->
+            <!--</li>-->
             <li>
                 <a asp-area="Admin" asp-controller="Article" asp-action="Index"><i class="far fa-newspaper"></i> Məqalələr <span class="badge">@*12*@</span></a>
             </li>
@@ -48,31 +56,29 @@
             </li>
 
 
-            <li>
-                <a asp-area="Admin" asp-controller="Banner" asp-action="Index" class="menudropdown"><i class="fas fa-th-list"></i> Sual-Cavab<span class="badge red"></span></a>
-                <!-- /.nav-second-level -->
-            </li>
+            <!--<li>
+        <a asp-area="Admin" asp-controller="Banner" asp-action="Index" class="menudropdown"><i class="fas fa-th-list"></i> Sual-Cavab<span class="badge red"></span></a>-->
+            <!-- /.nav-second-level -->
+            <!--</li>-->
 
             <li> <a asp-area="Admin" asp-controller="Comment" asp-action="Index"><i class="fas fa-comments"></i> Şərhlər</a> </li>
             @if (Model.Roles.Any(r => r.Equals("SuperAdmin") || r.Equals("Role.Read")))
             {
         <li>
             <a asp-area="Admin" asp-controller="Role" asp-action="Index"><i class="fas fa-user-tag"></i> Rollar</a>
-        </li>
-}
+        </li>}
             @if (Model.Roles.Any(r => r.Equals("SuperAdmin") || r.Equals("User.Read")))
             {
         <li>
             <a asp-area="Admin" asp-controller="User" asp-action="Index" class="menudropdown"><i class="fas fa-user-friends"></i> İstifadəçilər <span class="badge green"></span></a>
             <!-- /.nav-second-level -->
-        </li>}
+        </li>
+}
 
             <li>
                 <a href="#" class="menudropdown"><i class="fas fa-archive"></i>SEO Əməliyyatlar <span class="badge green"></span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level" style="display: none;">
-                    <li>
-                        <a asp-area="Admin" asp-controller="Option" asp-action="About"><i class="fas fa-tools"></i> Haqqımızda<span class="badge"></span></a>
-                    </li>
+
                     <li>
                         <a asp-area="Admin" asp-controller="Option" asp-action="EmailSettings"><i class="fas fa-at"></i> Email<span class="badge"></span></a>
                     </li>
@@ -82,7 +88,7 @@
                     <li>
                         <a asp-area="Admin" asp-controller="Option" asp-action="ArticleRightSideBarWidgetSettings"><i class="fas fa-newspaper"></i> Widget <span class="badge"></span></a>
                     </li>
-                    
+
                 </ul>
             </li>
             @if (Model.Roles.Any(r => r.Equals("SuperAdmin") || r.Equals("User.Read")))
@@ -94,7 +100,8 @@
                 <li><a asp-area="Admin" asp-controller="Article" asp-action="DeletedArticles">Məqalələr</a></li>
                 <li><a asp-area="Admin" asp-controller="Comment" asp-action="DeletedComments">Şərhlər</a></li>
             </ul>
-        </li>}
+        </li>
+}
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

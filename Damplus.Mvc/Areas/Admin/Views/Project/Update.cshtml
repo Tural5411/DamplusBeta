@@ -1,9 +1,8 @@
-﻿@model Damplus.Mvc.Areas.Admin.Models.ProjectAddViewModel
+﻿@model Damplus.Mvc.Areas.Admin.Models.ProjectUpdateViewModel
 @{
     ViewBag.Title = "Proyekt Elave Et";
 }
 <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <div class="row">
     <div class="col-md-12  header-wrapper">
         <h1 class="page-header">Admin - Proyektler</h1>
@@ -18,7 +17,7 @@
     <li class="active"><a asp-area="Admin" asp-action="Add" asp-controller="Project">Elave Et</a></li>
 </ol>
 
-<form asp-action="Add" asp-controller="Project" method="post" enctype="multipart/form-data">
+<form asp-action="Update" asp-controller="Project" method="post" enctype="multipart/form-data">
     <div class="row mt-2">
         <div class="col-md-8">
             <div class="card">
@@ -42,6 +41,7 @@
                     Vacib əməliyyatlar
                 </div>
                 <div class="card-body">
+                    <input type="hidden" asp-for="Id" />
                     <div class="form-group">
                         <label for="categoryList" asp-for="ProjectCategoryId"></label>
                         <select asp-for="ProjectCategoryId" asp-items="@(new SelectList(Model.ProjectCategories,"Id","Name"))" id="categoryList" class="form-control">
@@ -55,9 +55,15 @@
                         <span class="text-danger" asp-validation-for="Date"></span>
                     </div>
                     <div class="form-group">
-                        <label for="thumbnailUpload" asp-for="Photo"></label>
-                        <input type="file" accept="image/*" id="thumbnailUpload" class="form-control-file" asp-for="Photo" placeholder="Zəhmət Olmasa Şəkil seçin" />
+                        <label for="thumbnail" asp-for="Photo"></label>
+                        <input type="hidden" id="thumbnail" asp-for="Photo" />
+                        <img width="200" src="~/img/@Model.Photo" class="my-image" alt="@Model.Photo" />
                         <span class="text-danger" asp-validation-for="Photo"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="thumbnailUpload" asp-for="PhotoFile"></label>
+                        <input type="file" accept="image/*" id="thumbnailUpload" class="form-control-file" asp-for="PhotoFile" placeholder="Zəhmət Olmasa Şəkil seçin" />
+                        <span class="text-danger" asp-validation-for="PhotoFile"></span>
                     </div>
                     <div class="form-check">
                         <label asp-for="IsActive" for="isActive" class="form-check-label"></label>
@@ -101,6 +107,11 @@
                             <label for="seoTags" asp-for="Client"></label>
                             <input type="text" class="form-control" id="seoTags" asp-for="Client" />
                             <span class="text-danger" asp-validation-for="Client"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="seoTags" asp-for="Location"></label>
+                            <input type="text" class="form-control" id="seoTags" asp-for="Location" />
+                            <span class="text-danger" asp-validation-for="Location"></span>
                         </div>
                     </div>
                 </div>

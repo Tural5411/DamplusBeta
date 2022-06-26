@@ -20,7 +20,6 @@ namespace Damplus.Data.Concrete.EntityFramework.Mappings
             builder.Property(p => p.Description).HasMaxLength(500);
             builder.Property(p => p.IsActive).IsRequired();
             builder.Property(p => p.IsDeleted).IsRequired();
-            builder.Property(p => p.Photo).IsRequired().HasMaxLength(600);
             builder.Property(p => p.ModifiedByName).HasMaxLength(50).IsRequired();
             builder.Property(p => p.CreatedByName).HasMaxLength(50).IsRequired();
             builder.Property(p => p.CreatedDate).IsRequired();

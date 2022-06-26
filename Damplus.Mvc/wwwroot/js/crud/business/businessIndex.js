@@ -14,7 +14,9 @@
                 },
                 className: 'btn btn-success',
                 action: function (e, dt, node, config) {
-
+                    let url = window.location.href;
+                    url = url.replace("/Index", "");
+                    window.open(`${url}/Add`, "_self");
                 }
             },
         ],
@@ -136,7 +138,7 @@
         console.log(tableRow);
         Swal.fire({
             title: 'Silmək istədiyinizdən əminsiniz?',
-            text: `${businessName} adlı kateqoriya silinəcəkdir!`,
+            text: `${businessName} adlı xidmet silinəcəkdir!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -155,7 +157,7 @@
                         if (businessDto.ResultStatus === 0) {
                             Swal.fire(
                                 'Kateqoriya silindi!',
-                                `${businessDto.Business.Header} adlı kateqoriya uğurla silindi`,
+                                `${businessName} adlı xidmet uğurla silindi`,
                                 'success'
                             );
                             tableRow.fadeOut(3500);

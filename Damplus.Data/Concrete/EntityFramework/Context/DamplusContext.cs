@@ -20,11 +20,11 @@ namespace Damplus.Data.Concrete.EntityFramework.Context
         {
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(connectionString:
-        //    "data source=DESKTOP-RJ4V287\\SQLEXPRESS;initial catalog=Damplus;integrated security=True;MultipleActiveResultSets=True;");
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(connectionString:
+            "data source=DESKTOP-RJ4V287\\SQLEXPRESS;initial catalog=Damplus;integrated security=True;MultipleActiveResultSets=True;");
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ArticleMap());
