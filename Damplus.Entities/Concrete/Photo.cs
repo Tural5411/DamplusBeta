@@ -12,6 +12,6 @@ namespace Damplus.Entities.Concrete
     {
         public string URL { get; set; }
         public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        public virtual Project Project  { get; set; }
     }
 }

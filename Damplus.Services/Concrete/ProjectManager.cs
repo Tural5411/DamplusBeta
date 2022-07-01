@@ -92,7 +92,7 @@ namespace Damplus.Services.Concrete
 
         public async Task<IDataResult<ProjectDto>> Get(int ProjectId)
         {
-            var Project =await _unitOfWork.Projects.GetAsync(c => c.Id == ProjectId,c=>c.ProjectCategory);
+            var Project =await _unitOfWork.Projects.GetAsync(c => c.Id == ProjectId,c=>c.ProjectCategory,c=>c.Images);
             if (Project != null)
             {
                 return new DataResult<ProjectDto>(ResultStatus.Succes,new ProjectDto 
@@ -175,7 +175,7 @@ namespace Damplus.Services.Concrete
 
         public async Task<IDataResult<ProjectListDto>> GetAllByNonDeleteAndActive()
         {
-            var Projects = await _unitOfWork.Projects.GetAllAsync(c => c.IsActive && !c.IsDeleted,c=>c.ProjectCategory);
+            var Projects = await _unitOfWork.Projects.GetAllAsync(c => c.IsActive && !c.IsDeleted,c=>c.ProjectCategory,c=>c.Images);
             if (Projects.Count > -1)
             {
                 return new DataResult<ProjectListDto>(ResultStatus.Succes, new ProjectListDto

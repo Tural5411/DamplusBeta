@@ -13,7 +13,7 @@ namespace Damplus.Services.Abstract
     {
         //All Service Methods Are Async!
         Task<IDataResult<PhotoDto>> Get(int photoId);
-        Task<IDataResult<PhotoListDto>> GetAllByNonDeletedAndActive();
+        Task<IDataResult<PhotoListDto>> GetAllByNonDeletedAndActive(int projectId);
         Task<IResult> Add(PhotoAddDto photoAddDto, string createdByName);
         Task<IResult> HardDelete(int photoId);
     }

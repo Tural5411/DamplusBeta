@@ -9,5 +9,7 @@ namespace Damplus.Mvc.Models
     public class ProjectDetailViewModel
     {
         public ProjectDto ProjectDto { get; set; }
+        public ProjectListDto ProjectListDto { get; set; }
+        public PhotoListDto PhotoListDto { get; set; }
     }
 }

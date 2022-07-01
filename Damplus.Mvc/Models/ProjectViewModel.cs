@@ -9,5 +9,6 @@ namespace Damplus.Mvc.Models
     public class ProjectViewModel
     {
         public ProjectListDto ProjectListDto { get; set; }
+        public ProjectCategoryListDto ProjectCategoryListDto { get; set; }
     }
 }

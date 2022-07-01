@@ -137,6 +137,11 @@ namespace Damplus.Mvc
                     pattern: "xidmet/{name}/{serviceId}",
                     defaults: new { controller = "Services", action = "Detail" }
                     );
+                endpoints.MapControllerRoute(
+                    name: "portfolio",
+                    pattern: "portfolio/{name}/{projectId}",
+                    defaults: new { controller = "Project", action = "Detail" }
+                    );
                 endpoints.MapDefaultControllerRoute();
             });
         }

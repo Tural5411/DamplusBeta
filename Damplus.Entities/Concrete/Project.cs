@@ -21,6 +21,6 @@ namespace Damplus.Entities.Concrete
         public string Photo { get; set; }
         public int ProjectCategoryId { get; set; }
         public ProjectCategory ProjectCategory { get; set; }
-        public ICollection<Photo> Images { get; set; }
+        public virtual ICollection<Photo> Images { get; set; }
     }
 }

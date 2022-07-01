@@ -103,7 +103,7 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
         {
             var projectResult = await _projectService.GetUpdateDto(projectId);
             var categoriesResult = await _projectCategoryService.GetAllByNonDeleteAndActive();
-            var projectPhotosResult = await _photoService.GetAllByNonDeletedAndActive();
+            var projectPhotosResult = await _photoService.GetAllByNonDeletedAndActive(projectId);
             if (projectResult.ResultStatus == ResultStatus.Succes && categoriesResult.ResultStatus == ResultStatus.Succes)
             {
                 var projectUpdateViewModel = Mapper.Map<ProjectUpdateViewModel>(projectResult.Data);
@@ -169,7 +169,7 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
                 }
             }
             var categories = await _projectCategoryService.GetAllByNonDeleteAndActive();
-            var projectPhotosResult = await _photoService.GetAllByNonDeletedAndActive();
+            var projectPhotosResult = await _photoService.GetAllByNonDeletedAndActive(projectUpdateViewModel.Id);
             projectUpdateViewModel.ProjectCategories = categories.Data.ProjectCategories;
 
             projectUpdateViewModel.Images = projectPhotosResult.Data.Photos;

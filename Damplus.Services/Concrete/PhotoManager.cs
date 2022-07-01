@@ -71,9 +71,9 @@ namespace Damplus.Services.Concrete
                 Message = Messages.Article.NotFound(false)
             });
         }
-        public async Task<IDataResult<PhotoListDto>> GetAllByNonDeletedAndActive()
+        public async Task<IDataResult<PhotoListDto>> GetAllByNonDeletedAndActive(int projectId)
         {
-            var Photos = await _unitOfWork.Photos.GetAllAsync(a => !a.IsDeleted && a.IsActive,
+            var Photos = await _unitOfWork.Photos.GetAllAsync(a=>a.ProjectId==projectId,
                  a => a.Project);
             if (Photos.Count > -1)
             {
