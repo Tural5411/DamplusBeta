@@ -1,0 +1,35 @@
+﻿@using Microsoft.Extensions.Options
+@using Damplus.Entities.Concrete
+@inject IOptionsSnapshot<AboutUsPageInfo> about
+@{
+    var item = about.Value;
+}
+<section class="about-layout2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="text-block">
+                <div class="heading-layout2 mb-30">
+                    <span class="heading__subtitle">Haqqımızda</span>
+                    <h2 class="heading__title">@item.Header</h2>
+                    <p class="heading__desc mb-30 mt-40">
+                       @item.Content
+                    </p>
+                </div><!-- /heading -->
+                <ul class="list-items list-unstyled mb-40">
+                    <li>Gülərüz personal</li>
+                    <li>Peşəkar işçi qrup</li>
+                    <li>Düzgün strategiya</li>
+                    <li>Kreativ layihələr</li>
+                </ul>
+                <a asp-action="Index" asp-controller="Project" class="btn btn__secondary btn__icon">
+                    <span>Son layihələrimiz</span><i class="icon-arrow-right"></i>
+                </a>
+            </div><!-- /.col-xl-7 -->
+            <div class="imgs-block mt-50">
+                <div class="about__img">
+                    <img src="~/damplus/assets/images/about/2.png" alt="about" class="img-fluid w-100">
+                </div><!-- /.about-img -->
+            </div><!-- /.col-xl-5 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section>

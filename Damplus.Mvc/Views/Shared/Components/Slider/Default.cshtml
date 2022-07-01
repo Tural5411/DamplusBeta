@@ -1,0 +1,54 @@
+﻿@using Microsoft.Extensions.Options
+@using Damplus.Entities.Concrete
+@inject IOptionsSnapshot<SliderPageInfo> SliderPageInfo
+@{ var slider = SliderPageInfo.Value; }
+
+<section class="slider slider-layout2">
+    <div class="slick-carousel carousel-arrows-light m-slides-0"
+         data-slick='{"slidesToShow": 1, "arrows": false, "dots": false, "speed": 700,"fade": true,"cssEase": "linear"}'>
+        <div class="slide-item align-v-h bg-overlay bg-overlay-2">
+            <div class="bg-img"><img src="~/damplus/assets/images/sliders/3.jpg" alt="slide img"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+                        <div class="slide__content">
+                            <h2 class="slide__title">@slider.Header</h2>
+                            <p class="slide__desc">
+                                @slider.Content
+                            </p>
+                            <a asp-controller="Services" asp-action="Index" class="btn btn__white btn__icon btn__lg mr-30">
+                                <span>Xidmətlərimiz</span><i class="icon-arrow-right"></i>
+                            </a>
+                        </div><!-- /.slide-content -->
+                    </div><!-- /.col-xl-8 -->
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4 d-none d-xl-block">
+                        <div class="info__slider-wrap d-flex justify-content-end mt-30">
+                            <div class="info__slider">
+                                <div class="slick-carousel" data-slick='{"slidesToShow": 1, "arrows": false, "dots": true}'>
+                                    <div class="info__slider-item">
+                                        <div class="info__slider-icon"><i class="icon-wrench5"></i></div>
+                                        <h5 class="info__slider-title">
+                                            İndividual layihələndirmə əsasında xəyallarınızdakı tikilini inşa edirik
+                                        </h5>
+                                    </div><!-- /.info__slider-item -->
+                                    <div class="info__slider-item">
+                                        <div class="info__slider-icon"><i class="icon-wheelbarrow"></i></div>
+                                        <h5 class="info__slider-title">
+                                            Tikililərdə yalnız üstün keyfiyyətdə olan materiallar istifadə olunur
+                                        </h5>
+                                    </div><!-- /.info__slider-item -->
+                                    <div class="info__slider-item">
+                                        <div class="info__slider-icon"><i class="icon-wheelbarrow"></i></div>
+                                        <h5 class="info__slider-title">
+                                            Müştəri xidmətlərimizdən bütün suallarınıza cavab tapa bilərsiniz
+                                        </h5>
+                                    </div><!-- /.info__slider-item -->
+                                </div>
+                            </div><!-- /.info__slider -->
+                        </div>
+                    </div><!-- /.col-xl-4 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.slide-item -->
+    </div><!-- /.carousel -->
+</section>

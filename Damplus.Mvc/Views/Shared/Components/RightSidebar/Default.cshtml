@@ -1,0 +1,95 @@
+﻿@model Damplus.Mvc.Models.RightSidebarViewModel
+@using Damplus.Mvc.Extensions
+
+<aside>
+    <div class="widget mb-40">
+        <div class="widget-title text-center">
+            <h4>Axtarış</h4>
+        </div>
+        <div class="slidebar__form">
+            <form role="search" method="get" class="search-form" asp-controller="Article" asp-action="Search">
+                <input name="keyword" type="text" placeholder="Axtarış...">
+                <button><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    @*<div class="widget mb-40">
+            <div class="widget-title text-center">
+                <h4>Instagram</h4>
+            </div>
+            <ul class="widget-insta-post">
+                <li><a href="#"><img src="img/blog/aside/insta_01.jpg" alt="img"></a></li>
+                <li><a href="#"><img src="img/blog/aside/insta_02.jpg" alt="img"></a></li>
+                <li><a href="#"><img src="img/blog/aside/insta_03.jpg" alt="img"></a></li>
+                <li><a href="#"><img src="img/blog/aside/insta_04.jpg" alt="img"></a></li>
+                <li><a href="#"><img src="img/blog/aside/insta_05.jpg" alt="img"></a></li>
+                <li><a href="#"><img src="img/blog/aside/insta_06.jpg" alt="img"></a></li>
+                <li><a href="#"><img src="img/blog/aside/insta_07.jpg" alt="img"></a></li>
+                <li><a href="#"><img src="img/blog/aside/insta_08.jpg" alt="img"></a></li>
+                <li><a href="#"><img src="img/blog/aside/insta_09.jpg" alt="img"></a></li>
+            </ul>
+        </div>*@
+
+    <div class="widget mb-40">
+        <div class="widget-title text-center">
+            <h4>Kateqoriyalar</h4>
+        </div>
+        <ul class="cat__list">
+            @foreach (var item in Model.Categories)
+            {
+<li><a asp-action="Index" asp-controller="Article" asp-route-categoryId="@item.Id">@item.Name</a></li>            }
+        </ul>
+    </div>
+    <div class="widget mb-40">
+        <div class="widget-title text-center">
+            <h4>Bizi İzlə</h4>
+        </div>
+        <div class="widget-social text-center">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+    <div class="widget mb-40">
+        <div class="widget-title text-center">
+            <h4>Populyar Bloqlar</h4>
+        </div>
+        <div class="widget__post">
+            <ul>
+                @foreach (var item in Model.Articles)
+                {
+    <li>
+        <div class="widget__post-thumb">
+            <img src="~/img/@item.ThumbNail" width="80" height="60" alt="">
+        </div>
+        <div class="widget__post-content">
+            <h6><a href="/Bloq/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id">@item.Title</a></h6>
+            <span><i class="far fa-eye"></i>@item.ViewsCount</span>
+        </div>
+    </li>}
+
+            </ul>
+        </div>
+    </div>
+    <div class="widget mb-40">
+        <div class="widget-title text-center">
+            <h4>Etiketlər</h4>
+        </div>
+        <div class="widget__tag">
+            <ul>
+                <li><a href="#">Fitness</a></li>
+                <li><a href="#">Spa</a></li>
+                <li><a href="#">Plates</a></li>
+                <li><a href="#">Kosmetologiya</a></li>
+                <li><a href="#">Lazer Epilasiya</a></li>
+                <li><a href="#">Gözəllik Salonu</a></li>
+                <li><a href="#">Qida Planı</a></li>
+                <li><a href="#">Məşq Proqramı</a></li>
+                <li><a href="#">Müalicəvi Masaj</a></li>
+                <li><a href="#">Onurğa Problemləri</a></li>
+                <li><a href="#">Lazer Epilasiya</a></li>
+                <li><a href="#">Estetik Prosedurlar</a></li>
+            </ul>
+        </div>
+    </div>
+</aside>
