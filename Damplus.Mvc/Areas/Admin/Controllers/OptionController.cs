@@ -163,6 +163,7 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
                     x.Instagram = websiteInfo.Instagram;
                     x.Youtube = websiteInfo.Youtube;
                     x.Whatsapp = websiteInfo.Whatsapp;
+                    x.Phone = websiteInfo.Phone;
                 });
                 _toastNotification.AddSuccessToastMessage("Esas emeliyyatlar bölməsi uğurla editləndi.", new ToastrOptions
                 {

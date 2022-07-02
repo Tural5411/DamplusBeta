@@ -1,0 +1,110 @@
+﻿@model Damplus.Mvc.Models.ArticleDetailViewModel
+@using Damplus.Entities.DTOs
+@using Damplus.Mvc.Extensions
+@{ Layout = "_Layout";
+    ViewBag.Title = Model.ArticleDto.Article.Title;
+    ViewBag.Description = Model.ArticleDto.Article.SeoDescription;
+    ViewBag.Author = Model.ArticleDto.Article.SeoAuthor;
+    ViewBag.Tags = Model.ArticleDto.Article.SeoTags;
+    var listTag = ViewBag.listTags;
+    ViewBag.image = Model.ArticleDto.Article.ThumbNail;
+    string link = $"/Bloq/{Url.FriendlyUrlHelper(Model.ArticleDto.Article.Title).ToLower().ToString()}/{Model.ArticleDto.Article.Id}";
+    ViewBag.seolink = link;
+    ViewBag.datetime = Model.ArticleDto.Article.CreatedDate;
+    ViewBag.modifiedtime = Model.ArticleDto.Article.ModifiedDate; }
+
+<!-- ========================
+      page title
+   =========================== -->
+<section class="page-title page-title-layout8 text-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <nav>
+                    <ol class="breadcrumb justify-content-center mb-20">
+                        <li class="breadcrumb-item"><a href="index-2.html">Ana Səhifə</a></li>
+                        <li class="breadcrumb-item"><a href="blog.html">Bloqlar</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            @Model.ArticleDto.Article.Title
+                        </li>
+                    </ol>
+                </nav>
+            </div><!-- /.col-xl-6 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.page-title -->
+<!-- ======================
+  Blog Single
+========================= -->
+<section class="blog blog-single pt-0 pb-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                @await Component.InvokeAsync("RightSidebar") <!-- /.sidebar -->
+            </div><!-- /.col-lg-4 -->
+            <div class="col-sm-12 col-md-12 col-lg-8">
+                <div class="blog-item mb-0">
+                    <div class="blog__img">
+                        <a href="#">
+                            <img src="~/img/@Model.ArticleDto.Article.ThumbNail" alt="@Model.ArticleDto.Article.Title | Damplus">
+                        </a>
+                    </div><!-- /.entry-img -->
+                    <div class="blog__content">
+                        <div class="blog__meta d-flex align-items-center">
+                            <div class="blog__meta-cat">
+                                <a href="#">@Model.ArticleDto.Article.Category.Name</a>
+                            </div><!-- /.blog-meta-cat -->
+                            <span class="blog__meta-author">By: <a href="#">Damplus</a></span>
+                            <span class="blog__meta-author">Baxış: <a href="#">@Model.ArticleDto.Article.ViewsCount</a></span>
+                            <span class="blog__meta-date">@Model.ArticleDto.Article.Date.ToShortDateString()</span>
+                        </div><!-- /.blog-meta -->
+                        <h1 class="blog__title">@Model.ArticleDto.Article.Title</h1>
+                        <div class="blog__desc">
+                            <p>
+                                @Html.Raw(Model.ArticleDto.Article.Content)
+                            </p>
+                        </div><!-- /.blog-desc -->
+                    </div><!-- /.entry-content -->
+                </div><!-- /.blog-item -->
+                <div class="blog-share d-flex flex-wrap justify-content-between mb-30">
+                    <a href="#" class="btn btn__social btn__facebook">
+                        <i class="fa fa-facebook"></i><span>Facebook</span>
+                    </a>
+                    <a href="#" class="btn btn__social btn__twitter">
+                        <i class="fa fa-instagram"></i><span>Instagram</span>
+                    </a>
+                    <a href="#" class="btn btn__social btn__google-plus">
+                        <i class="fa fa-whatsapp"></i><span>Whatsapp</span>
+                    </a>
+                </div><!-- /.blog-share -->
+                <div class="blog-tags d-flex flex-wrap">
+                    <strong class="mr-20 color-heading">Etiketlər:</strong>
+                    <ul class="list-unstyled d-flex flex-wrap mb-40">
+                        @foreach (var item in listTag)
+                        {
+                     <li><a href="#" rel="@item">@item</a></li>}
+                    </ul>
+                </div><!-- /.blog-tags -->
+                <div class="blog-widget">
+                    <div class="blog-author">
+                        <div class="blog__author-avatar">
+                            <img src="~/damplus/assets/images/blog/author/1.jpg" alt="Damplus Tikinti Şirkəti">
+                        </div><!-- /.author-avatar  -->
+                        <div class="blog__author-content">
+                            <h6 class="blog__author-name">Damplus</h6>
+                            <p class="blog__author-bio">
+                                2017 ci ildən fəaliyyətə başlayan Damplus idman sağlamlıq mərkəzi bütün ailənin bərabər idmana gələ biləcəyi bir məkandır. Xanımlar və bəylər üçün zallar ayrıdır , bundan başqa Pilates zalı vardır hansı ki, onurğasında problemi olan insanlar üçün ideal seçimdir.
+                            </p>
+                            <ul class="social__icons list-unstyled">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-vimeo"></i></a> </li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a> </li>
+                            </ul>
+                        </div><!-- /.author-content  -->
+                    </div><!-- /.blog-widget  -->
+                </div><!-- /.blog-author  -->
+            </div><!-- /.col-lg-8 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.blog Single -->
