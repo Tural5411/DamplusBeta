@@ -54,14 +54,15 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var businessAddDto = Mapper.Map<BusinessAddDto>(businessAddViewModel);
+
                 var imageResult = await ImageHelper.UploadImage(businessAddViewModel.Title,
                     businessAddViewModel.PictureFile, PictureType.Post);
-                //Pdf Upload
-                 var pdfResult = await _fileHelper.UploadFile(businessAddViewModel.Title,
-                     businessAddViewModel.PdfFile);
-                businessAddDto.Link = pdfResult.Data.FullName;
+                
                 businessAddDto.Thumbnail = imageResult.Data.FullName;
+
                 var result = await _businessService.Add(businessAddDto, LoggedInUser.UserName);
+
+
                 if (result.ResultStatus == ResultStatus.Succes)
                 {
                     _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions
@@ -70,6 +71,7 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
                     });
                     return RedirectToAction("Index");
                 }
+
                 else
                 {
                     ModelState.AddModelError("", result.Message);

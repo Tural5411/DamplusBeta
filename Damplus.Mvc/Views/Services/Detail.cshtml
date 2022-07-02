@@ -1,0 +1,69 @@
+﻿@model ServiceDetailViewModel
+@using Damplus.Mvc.Extensions
+
+<!-- ========================
+      page title
+   =========================== -->
+<section class="page-title page-title-layout6 bg-overlay bg-overlay-2 bg-parallax">
+    <div class="bg-img"><img src="~/damplus/assets/images/page-titles/8.jpg" alt="Damplus"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                <h1 class="pagetitle__heading mb-0">@Model.BusinessDto.Business.Title</h1>
+            </div><!-- /.col-xl-6 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.page-title -->
+<!-- ======================
+  Text Content Section
+========================= -->
+<section class="text-content-section pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <aside class="sidebar mb-30">
+                    <div class="widget widget-categories">
+                        <h5 class="widget__title">Digər xidmətlərimiz</h5>
+                        <div class="widget-content">
+                            <ul class="list-unstyled">
+                                 <li>
+                                    <a href="#" class="active">
+                                        <span>@Model.BusinessDto.Business.Title</span><i class="icon-arrow-right"></i>
+                                    </a>
+                                </li>
+                                @foreach (var item in Model.BusinessListDto.Businesses.Where(x=>x.Id!=Model.BusinessDto.Business.Id))
+                                {
+                                    <li>
+                                        <a href="/Xidmet/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id"><span>@item.Title</span><i class="icon-arrow-right"></i></a>
+                                    </li>
+                                }
+                            </ul>
+                        </div><!-- /.widget-content -->
+                    </div><!-- /.widget-categories -->
+                    <div class="widget widget-help bg-theme">
+                        <div class="widget__content">
+                            <h5>Damplus</h5>
+                            <p>
+                                İndividual layihələndirmə əsasında xəyallarınızdakı tikilini inşa edirik
+                            </p>
+                            <a href="/elaqe" class="btn btn__white btn__link">
+                                <span class="color-white">Əlaqə</span> <i class="icon-arrow-right"></i>
+                            </a>
+                        </div><!-- /.widget-download -->
+                    </div><!-- /.widget-help -->
+                </aside><!-- /.sidebar -->
+            </div><!-- /.col-lg-4 -->
+            <div class="col-sm-12 col-md-12 col-lg-8">
+                <h5 class="mb-40">
+                    @Model.BusinessDto.Business.SeoDescription
+                </h5>
+                <div class="text__block mb-30">
+                    <h5 class="text__block-title">@Model.BusinessDto.Business.Title</h5>
+                    <p class="text__block-desc">
+                        @Html.Raw(Model.BusinessDto.Business.Content)
+                    </p>
+                </div><!-- /.text-block -->
+            </div><!-- /.col-lg-8 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.Text Content Section -->

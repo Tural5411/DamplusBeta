@@ -32,8 +32,6 @@ namespace Damplus.Entities.DTOs
         [Required(ErrorMessage = "{0} sahəsi boş ola bilməz")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
-        [DisplayName("Fayl Pdf")]
-        public string Link { get; set; }
         [DisplayName("Seo müəllif")]
         [Required(ErrorMessage = "{0} sahəsi boş ola bilməz")]
         [MaxLength(60, ErrorMessage = "{0} sahəsi {1} dən böyük ola bilməz")]

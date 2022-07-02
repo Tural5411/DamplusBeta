@@ -20,8 +20,6 @@ namespace Damplus.Mvc.Areas.Admin.Models
         [Required(ErrorMessage = "{0} sahəsi boş ola bilməz")]
         [MinLength(20, ErrorMessage = "{0} sahəsi {1} dən kiçik ola bilməz")]
         public string Content { get; set; }
-        [DisplayName("Fayl Pdf")]
-        public IFormFile PdfFile { get; set; }
         public string FileName { get; set; }
         [DisplayName("Şəkil")]
         [Required(ErrorMessage = "{0} sahəsi boş ola bilməz")]

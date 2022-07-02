@@ -14,10 +14,8 @@ namespace Damplus.Mvc.Controllers
     public class ServicesController : Controller
     {
         private readonly IBusinessService _businessService;
-        private IHostingEnvironment _environment;
-        public ServicesController(IHostingEnvironment environment, IBusinessService businessService)
+        public ServicesController(IBusinessService businessService)
         {
-            _environment = environment;
             _businessService = businessService;
         }
         [Route("Xidmet")]
@@ -44,12 +42,12 @@ namespace Damplus.Mvc.Controllers
             }
             return NotFound();
         }
-        [Obsolete]
-        public async Task<IActionResult> DownloadFile(string filePath, int id)
-        {
-            string path = Path.Combine(this._environment.WebRootPath, "files/") + filePath;
-            byte[] bytes = System.IO.File.ReadAllBytes(path);
-            return File(bytes, "application/octet-stream", filePath);
-        }
+        //[Obsolete]
+        //public async Task<IActionResult> DownloadFile(string filePath, int id)
+        //{
+        //    string path = Path.Combine(this._environment.WebRootPath, "files/") + filePath;
+        //    byte[] bytes = System.IO.File.ReadAllBytes(path);
+        //    return File(bytes, "application/octet-stream", filePath);
+        //}
     }
 }

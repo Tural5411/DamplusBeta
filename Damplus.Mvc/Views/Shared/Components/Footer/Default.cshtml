@@ -1,0 +1,70 @@
+﻿@model Damplus.Mvc.Models.HeaderViewModel
+@using Damplus.Mvc.Extensions
+@using Microsoft.Extensions.Options
+@using Damplus.Entities.Concrete
+@inject IOptionsSnapshot<WebsiteInfo> choose
+@{ var info = choose.Value; }
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 footer__widget footer__widget-about">
+                    <div class="footer__widget-content">
+                        <img src="~/damplus/assets/images/logo/logo-footer.png" alt="Damplus Şirkətinin Loqosu" class="mb-30">
+                        <p class="mb-20">
+                            A leading developer of A-grade commercial, industrial and residential projects in USA.
+                            Since its foundation the company has doubled its turnover year on year with its staff.
+                        </p>
+                        <ul class="social__icons list-unstyled">
+                            <li><a href="@info.Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="@info.Instagram"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="@info.Whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                        </ul><!-- /.social-icons -->
+                    </div>
+                </div><!-- /.col-xl-4 -->
+                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 footer__widget footer__widget-nav">
+                    <h6 class="footer__widget-title">Xidmətlərimiz</h6>
+                    <div class="footer__widget-content">
+                        <nav>
+                            <ul class="list-unstyled">
+                                @foreach (var item in Model.BusinessListDto.Businesses)
+                                {
+                                    <li><a href="/Xidmet/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id">@item.Title</a></li>
+                                }
+
+                            </ul>
+                        </nav>
+                    </div><!-- /.footer-widget-content -->
+                </div><!-- /.col-xl-2 -->
+                <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 footer__widget footer__widget-nav">
+                    <h6 class="footer__widget-title">Sayt Xəritəsi</h6>
+                    <div class="footer__widget-content">
+                        <nav>
+                            <ul class="list-unstyled">
+                                <li><a asp-action="Index" asp-controller="Home">Ana Səhifə</a></li>
+                                <li><a asp-action="About" asp-controller="Home">Haqqımızda</a></li>
+                                <li><a asp-action="Index" asp-controller="Project">Portfolio</a></li>
+                                <li><a asp-action="Index" asp-controller="Services">Xidmətlərimiz</a></li>
+                                <li><a asp-action="Index" asp-controller="Article">Bloqlar</a></li>
+                                <li><a asp-action="Contact" asp-controller="Home">Əlaqə</a></li>
+                            </ul>
+                        </nav>
+                    </div><!-- /.footer-widget-content -->
+                </div><!-- /.col-xl-2 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.footer-top -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                    <p class="mb-0 color-white">
+                        &copy; 2018 Damplus. Müəllif hüquqları qorunur
+                        <a hidden href="https://digitalist.az/">digitalist.az</a>
+                    </p>
+                </div><!-- /.col-lg-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.Footer-bottom -->
+</footer>
