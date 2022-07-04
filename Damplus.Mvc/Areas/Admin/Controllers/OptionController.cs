@@ -164,6 +164,9 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
                     x.Youtube = websiteInfo.Youtube;
                     x.Whatsapp = websiteInfo.Whatsapp;
                     x.Phone = websiteInfo.Phone;
+                    x.Phone2 = websiteInfo.Phone2;
+                    x.Location = websiteInfo.Location;
+                    x.Email = websiteInfo.Email;
                 });
                 _toastNotification.AddSuccessToastMessage("Esas emeliyyatlar bölməsi uğurla editləndi.", new ToastrOptions
                 {

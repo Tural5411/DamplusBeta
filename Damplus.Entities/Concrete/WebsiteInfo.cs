@@ -18,5 +18,8 @@ namespace Damplus.Entities.Concrete
         public string Facebook { get; set; }
         public string Youtube { get; set; }
         public string Whatsapp { get; set; }
+        public string Location { get; set; }
+        public string Phone2 { get; set; }
+        public string Email { get; set; }
     }
 }
