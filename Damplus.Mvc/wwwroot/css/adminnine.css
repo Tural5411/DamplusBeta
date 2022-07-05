@@ -1406,8 +1406,8 @@ label {
 
 .breadcrumb {
     margin-bottom: 30px;
-    background-color: transparent;
-    border-radius: 0px;
+    background-color: #fff;
+    border-radius: 5px;
     border-bottom: 1px solid #e1eaef;
     border-top: 1px solid #e1eaef;
 }
@@ -1699,11 +1699,15 @@ table tr td img {
     margin-left: 0;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
+    border-color: transparent !important;
+    background-color: transparent !important;
 }
 
 .pagination > li:last-child > a, .pagination > li:last-child > span {
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
+    border-color: transparent !important;
+    background-color: transparent !important;
 }
 /*==============================*/
 /*========= Circle buttons ========*/
@@ -4192,6 +4196,7 @@ footer {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 6px 1px #ccc;
+    padding: 20px 10px;
 }
 
 .header-navbar {

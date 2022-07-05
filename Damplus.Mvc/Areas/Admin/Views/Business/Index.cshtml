@@ -66,8 +66,8 @@
     <td class="center">@business.ModifiedDate.ToShortDateString()</td>
     <td class="center">@business.ModifiedByName</td>
     <td class="text-center">
-        <a asp-action="Update" asp-controller="Business" asp-route-businessId="@business.Id" class="btn btn-primary btn-sm btn-block @*btn-update*@" data-id="@business.Id"><span class="fas fa-edit"></span> </a>
-        <button class="btn btn-danger btn-sm btn-delete btn-block" data-id="@business.Id"><span class="fas fa-minus-circle"></span> </button>
+        <a asp-action="Update" asp-controller="Business" asp-route-businessId="@business.Id" class="btn btn-primary btn-sm" data-id="@business.Id"><span class="fas fa-edit"></span> </a>
+        <button class="btn btn-danger btn-sm btn-delete" data-id="@business.Id"><span class="fas fa-minus-circle"></span> </button>
     </td>
 </tr>
 }

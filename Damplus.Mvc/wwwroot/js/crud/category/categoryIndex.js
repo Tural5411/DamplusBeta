@@ -19,8 +19,8 @@
                 }
             },
             {
-                text: 'Kateqoriyaları Yenilə',
-                className: 'btn btn-warning',
+                //text: 'Kateqoriyaları Yenilə',
+                //className: 'btn btn-warning',
                 action: function (e, dt, node, config) {
                     $.ajax({
                         type: 'GET',
