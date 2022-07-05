@@ -8,7 +8,7 @@
         "order": [[5, "desc"]],
         buttons: [
             {
-                text: 'Yeni Xidmet',
+                text: 'Yeni Xidmət',
                 attr: {
                     id: "btnAdd",
                 },
