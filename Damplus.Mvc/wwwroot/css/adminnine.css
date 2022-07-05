@@ -466,6 +466,10 @@ textarea.form-control {
     font-weight: 400
 }
 
+.modal-title span{
+    margin-right:10px
+}
+
 .modal-header .close {
     margin: 0
 }

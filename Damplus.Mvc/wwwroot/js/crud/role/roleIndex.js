@@ -9,7 +9,7 @@
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         buttons: [
             {
-                text: 'Yenile',
+                text: 'Yenilə',
                 className: 'btn btn-warning',
                 action: function (e, dt, node, config) {
                     $.ajax({
