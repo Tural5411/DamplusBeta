@@ -9,7 +9,7 @@
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         buttons: [
             {
-                text: 'Yenile',
+                text: 'Yenilə',
                 className: 'btn btn-warning',
                 action: function (e, dt, node, config) {
                     $.ajax({
@@ -117,8 +117,8 @@
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Bəli, silmək istəyirəm.',
-                cancelButtonText: 'Xeyr, silmək istəmirəm.'
+                confirmButtonText: 'Bəli',
+                cancelButtonText: 'Xeyr'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({

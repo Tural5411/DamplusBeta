@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\damplus\assets\images\logo\adminLogo.jfif" />
+    <Content Remove="wwwroot\damplus\assets\images\logo\images %281%29.png" />
+    <Content Remove="wwwroot\damplus\assets\images\logo\images.jfif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />

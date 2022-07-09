@@ -16,12 +16,12 @@
                     <div class="form-row">
                     <div class="form-group col-md-6">
                         <label asp-for="UserName"></label>
-                        <input class="form-control" asp-for="UserName" placeholder="Lütfen, kullanıcı adı giriniz."/>
+                        <input class="form-control" asp-for="UserName" placeholder="Lütfen, İstifadəçi adı giriniz."/>
                         <span class="text-danger" asp-validation-for="UserName"></span>
                     </div>
                         <div class="form-group col-md-6">
                             <label asp-for="Email"></label>
-                            <input type="email" class="form-control" asp-for="Email" placeholder="Lütfen, e-posta adresi giriniz."/>
+                            <input type="email" class="form-control" asp-for="Email" placeholder="Lütfen, E-mail giriniz."/>
                             <span class="text-danger" asp-validation-for="Email"></span>
                         </div>
                         <div class="form-group col-md-6">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label asp-for="PhoneNumber"></label>
-                            <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Lütfen, telefon numarası giriniz."/>
+                            <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Lütfen, Telefon nömrəsi giriniz."/>
                             <span class="text-danger" asp-validation-for="PhoneNumber"></span>
                         </div>
                         <div class="form-group col-md-6">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group col-md-12">
                         <label asp-for="About"></label>
-                            <textarea class="form-control" asp-for="About" placeholder="Lütfen, hakkında bilgisi giriniz." rows="4"></textarea>
+                            <textarea class="form-control" asp-for="About" placeholder="Lütfen, Haqqında bilgisi giriniz." rows="4"></textarea>
                         <span class="text-danger" asp-validation-for="About"></span>
                     </div>
                     <div class="form-group col-md-6">
@@ -91,8 +91,8 @@
                             <span class="text-danger" asp-validation-for="PictureFile"></span>
                         </div>
                         <div class="form-group col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary btn-lg"><span class="fas fa-save"></span> Kaydet</button>
-                            <a class="btn btn-danger btn-lg" asp-area="Admin" asp-controller="Home" asp-action="Index"><span class="fas fa-times"></span> İptal</a>
+                            <button type="submit" class="btn btn-primary btn-lg"><span class="fas fa-save"></span> Yadda saxla</button>
+                            <a class="btn btn-danger btn-lg" asp-area="Admin" asp-controller="Home" asp-action="Index"><span class="fas fa-times"></span>Ləğv et</a>
                         </div>
                     </div>
                     

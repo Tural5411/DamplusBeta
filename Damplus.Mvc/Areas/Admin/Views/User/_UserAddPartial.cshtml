@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><span class="fas fa-plus"></span> Kullanıcı Ekle</h5>
+                <h5 class="modal-title"><span class="fas fa-plus"></span>İstifadəçi əlavə et</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="İptal">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,12 +15,12 @@
                     <div class="form-row">
                     <div class="form-group col-md-6">
                         <label asp-for="UserName"></label>
-                        <input class="form-control" asp-for="UserName" placeholder="Lütfen, kullanıcı adı giriniz."/>
+                        <input class="form-control" asp-for="UserName" placeholder="Lütfen, İstifadəçi adı giriniz."/>
                         <span class="text-danger" asp-validation-for="UserName"></span>
                     </div>
                     <div class="form-group col-md-6">
                         <label asp-for="Email"></label>
-                        <input type="email" class="form-control" asp-for="Email" placeholder="Lütfen, e-posta adresi giriniz."/>
+                        <input type="email" class="form-control" asp-for="Email" placeholder="Lütfen, E-mail giriniz."/>
                         <span class="text-danger" asp-validation-for="Email"></span>
                     </div>
                     <div class="form-group col-md-6">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label asp-for="PhoneNumber"></label>
-                        <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Lütfen, telefon numarası giriniz."/>
+                        <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Lütfen, Telefon nömrəsi giriniz."/>
                         <span class="text-danger" asp-validation-for="PhoneNumber"></span>
                     </div>
                         <div class="form-group col-md-6">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group col-md-12">
                         <label asp-for="About"></label>
-                        <textarea class="form-control" asp-for="About" placeholder="Lütfen, hakkında bilgisi giriniz." rows="4"></textarea>
+                        <textarea class="form-control" asp-for="About" placeholder="Lütfen, Haqqında bilgisi giriniz." rows="4"></textarea>
                         <span class="text-danger" asp-validation-for="About"></span>
                     </div>
                     <div class="form-group col-md-6">
@@ -93,7 +93,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"><span class="fas fa-times"></span> Legv Et</button>
-                <button type="button" class="btn btn-primary btn-block" id="btnSave"><span class="fas fa-save"></span> Yadda Saxla</button>
+                <button type="button" class="btn btn-primary btn-block" id="btnSave"><span class="fas fa-save"></span> Yadda saxla</button>
             </div>
         </div>
     </div>

@@ -19,12 +19,12 @@ namespace Damplus.Entities.Concrete
         [Required(ErrorMessage = "{0} sahəsi boş olmamalıdır.")]
         [Range(0, 9999, ErrorMessage = "{0} sahesi en az {1}, en cox {2} deyerinde olmalıdır.")]
         public int Port { get; set; }
-        [DisplayName("Gönderen Adı")]
+        [DisplayName("Göndərən Adı")]
         [Required(ErrorMessage = "{0} sahəsi boş olmamalıdır.")]
         [MaxLength(100, ErrorMessage = "{0} sahəsi {1} karakterdən böyük olmamalıdır.")]
         [MinLength(2, ErrorMessage = "{0} sahəsi {1} karakterdən kiçik olmamalıdır.")]
         public string SenderName { get; set; }
-        [DisplayName("Gönderen Email")]
+        [DisplayName("Göndərən Email")]
         [Required(ErrorMessage = "{0} sahəsi boş olmamalıdır.")]
         [DataType(DataType.EmailAddress, ErrorMessage = "{0} alanı e-posta formatında olmalıdır.")]
         [MaxLength(100, ErrorMessage = "{0} sahəsi {1} karakterdən böyük olmamalıdır.")]

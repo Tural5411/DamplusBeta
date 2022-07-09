@@ -9,7 +9,7 @@
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         buttons: [
             {
-                text: 'Ekle',
+                text: 'Əlavə et',
                 attr: {
                     id: "btnAdd",
                 },
@@ -18,7 +18,7 @@
                 }
             },
             {
-                text: 'Yenile',
+                text: 'Yenilə',
                 className: 'btn btn-warning',
                 action: function (e, dt, node, config) {
                     $.ajax({
@@ -189,14 +189,14 @@
             const tableRow = $(`[name="${id}"]`);
             const userName = tableRow.find('td:eq(1)').text();
             Swal.fire({
-                title: 'Silmek istediğinize emin misiniz?',
-                text: `${userName} adlı kullanıcı silinicektir!`,
+                title: 'Silmək istədiyinizdən əminsiniz?',
+                text: `${userName} adlı istifadəçi silinəcək!`,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Evet, silmek istiyorum.',
-                cancelButtonText: 'Hayır, silmek istemiyorum.'
+                confirmButtonText: 'Bəli',
+                cancelButtonText: 'Xeyr'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
