@@ -1,12 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Options
+@using Damplus.Entities.Concrete
+@inject IOptionsSnapshot<WebsiteInfo> choose
+@{ var item = choose.Value; }
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="Promina - Construction And Building Template">
+    <meta name="description" content="@item.SeoDescription">
+    <meta name="keywords" content="@item.SeoTags">
     <link href="~/damplus/assets/images/favicon/favicon.png" rel="icon">
-    <title>Promina - Construction And Building Template</title>
+    <title>@item.Title</title>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700%7cRoboto:400,500,700&amp;display=swap">
     <link rel="stylesheet" href="~/damplus/assets/css/libraries.css">
@@ -49,5 +55,6 @@
     <script src="~/damplus/assets/js/jquery-3.5.1.min.js"></script>
     <script src="~/damplus/assets/js/plugins.js"></script>
     <script src="~/damplus/assets/js/main.js"></script>
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 </html>

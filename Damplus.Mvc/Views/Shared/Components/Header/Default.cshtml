@@ -93,11 +93,11 @@
             </div><!-- /.navbar-collapse -->
             <ul class="actions__list list-unstyled d-flex align-items-center mb-0 ml-30">
                 <li>
-                    <a href="request-quote.html" class="btn btn__primary action__btn-request">
+                    <a asp-action="Online" asp-controller="Home" class="btn btn__primary action__btn-request @Html.IsActive("Home","Online")">
                         <span>Müraciət Et</span><i class="icon-arrow-right"></i>
                     </a>
                 </li>
-                <li><button type="button" class="search-popup-trigger"><i class="fa fa-search"></i></button></li>
+                @*<li><button type="button" class="search-popup-trigger"><i class="fa fa-search"></i></button></li>*@
             </ul><!-- /.actions__list -->
         </div><!-- /.container -->
     </nav><!-- /.navabr -->
