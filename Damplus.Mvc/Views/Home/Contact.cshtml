@@ -2,6 +2,7 @@
 @using Microsoft.Extensions.Options
 @inject IOptionsSnapshot<WebsiteInfo> info
 @{ var item = info.Value; }
+@model Damplus.Entities.DTOs.EmailSendDto
 <!-- =========================
         Google Map
 =========================  -->
@@ -44,51 +45,40 @@
                             </div>
                         </div><!-- /.contact__panel-info-bottom -->
                     </div><!-- /.contact__panel-info -->
-                    <form method="post" action="https://7oroof.com/demos/promina/~/damplus/assets/php/contact.php" id="contactForm" class="contact__panel-form">
+                    <form method="post" asp-action="Contact" asp-controller="Home" class="contact__panel-form">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="contact__panel-title">Get In Touch</h4>
+                                <h4 class="contact__panel-title">Əlaqə</h4>
                                 <p class="contact__panel-desc mb-40">
-                                    Complete control over products allows us to ensure our
-                                    customers receive the best quality prices and service. We take great pride in everything that we
-                                    do in our factory.
+                                    Bizim Əlaqə Saxlamaq üçün aşağıdakı formu doldura bilərsiniz.
                                 </p>
                             </div>
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name" id="contact-name" name="contact-name"
+                                    <input type="text" asp-for="Name" class="form-control" placeholder="Ad Soyad"
                                            required>
                                 </div>
                             </div><!-- /.col-lg-6 -->
                             <div class="col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" id="contact-email"
-                                           name="contact-email" required>
+                                    <input type="text" asp-for="Subject" class="form-control" placeholder="Nömrəniz"
+                                            required>
                                 </div>
                             </div><!-- /.col-lg-6 -->
-                            <div class="col-sm-6 col-md-6 col-lg-6">
+                            <div class="col-sm-6 col-md-12 col-lg-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone" id="contact-Phone"
-                                           name="contact-phone" required>
-                                </div>
-                            </div><!-- /.col-lg-6 -->
-                            <div class="col-sm-6 col-md-6 col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Website" id="contact-subject"
-                                           name="contact-subject" required>
+                                    <input type="text" asp-for="Email" class="form-control" placeholder="Email"
+                                            required>
                                 </div>
                             </div><!-- /.col-lg-6 -->
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
-                                    <textarea class="form-control" placeholder="Additional Details!" placeholder="Message"
-                                              id="contact-messgae" name="contact-messgae" required></textarea>
+                                    <textarea class="form-control" asp-for="Message" placeholder="Additional Details!"
+                                                required></textarea>
                                 </div>
                             </div><!-- /.col-lg-12 -->
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <button type="submit" class="btn btn__primary btn__block  btn__lg">
-                                    <span class="mx-2">Submit Request</span><i class="icon-arrow-right mx-2"></i>
-                                </button>
-                                <div class="contact-result"></div>
+                                <input type="submit" value="Göndər" class="btn btn__primary btn__block  btn__lg" />
                             </div><!-- /.col-lg-12 -->
                         </div><!-- /.row -->
                     </form>
@@ -97,3 +87,6 @@
         </div><!-- /.row -->
     </div><!-- /.container -->
 </section><!-- /.contact layout 1 -->
+
+
+@await Component.InvokeAsync("NToastNotify")

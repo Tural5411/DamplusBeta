@@ -1,18 +1,34 @@
-﻿@using Microsoft.Extensions.Options
-@using Damplus.Entities.Concrete
-@inject IOptionsSnapshot<WebsiteInfo> choose
-@{ var item = choose.Value; }
-
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="az">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="@item.SeoDescription">
-    <meta name="keywords" content="@item.SeoTags">
     <link href="~/damplus/assets/images/favicon/favicon.png" rel="icon">
-    <title>@item.Title</title>
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Description">
+    <meta name="keywords" content="@ViewBag.Tags" />
+    <meta name="image" content="https://damplus.az/img/@ViewBag.image" />
+    <meta name="twitter:image" content="https://damplus.az/img/@ViewBag.image" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@@damplus" />
+    <meta name="twitter:creator" content="@@damplus">
+    <meta name="twitter:title" content="@ViewBag.Title" />
+    <meta name="twitter:description" content="@ViewBag.Description" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="@ViewBag.Description">
+    <meta property="og:url" content="https://damplus.az/@ViewBag.seolink" />
+    <meta property="og:site_name" content="damplus" />
+    <meta property="og:locale" content="az_AZ" />
+    <meta property="og:title" name="og:title" content="@ViewBag.Title" />
+    <meta property="og:image" content="https://damplus.az/img/@ViewBag.image" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="thumbnail" content="https://damplus.az/img/@ViewBag.image" />
+    <meta name="msapplication-TileImage" content="https://damplus.az/img/@ViewBag.image" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <link rel="canonical" href="https://damplus.az/@ViewBag.seolink">
+    <meta name="author" content="@ViewBag.Author">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700%7cRoboto:400,500,700&amp;display=swap">
     <link rel="stylesheet" href="~/damplus/assets/css/libraries.css">
@@ -28,7 +44,6 @@
             Header
         =========================== -->
         @await Component.InvokeAsync("Header") <!-- /.Header -->
-
         @RenderBody()
 
         <!-- ========================
@@ -46,15 +61,12 @@
         </div><!-- /. search-popup -->
 
     </div><!-- /.wrapper -->
-    <script>
-        window.whatsformId = '1mhzpP';
-        window.whatsformMessage = 'WhatsApp';
-    </script>
+    <script>window.whatsformId = '1mhzpP';
+        window.whatsformMessage = 'WhatsApp';</script>
     <script async src="https://whatsform.com/launcher.js"></script>
 
     <script src="~/damplus/assets/js/jquery-3.5.1.min.js"></script>
     <script src="~/damplus/assets/js/plugins.js"></script>
     <script src="~/damplus/assets/js/main.js"></script>
-    @await Component.InvokeAsync("NToastNotify")
 </body>
 </html>

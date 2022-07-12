@@ -16,28 +16,14 @@ namespace Damplus.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly IArticleService _articleService;
-        //private readonly ITeamService _teamService;
-        //private readonly IBusinessService _businessService;
-        //private readonly IProjectCategoryService _projectService;
         private readonly AboutUsPageInfo _aboutUsPageInfo;
         private readonly IMailService _mailService;
         private readonly IToastNotification _toastNotification;
-        //private readonly SliderPageInfo _sliderPageInfo;
 
 
         public HomeController(IOptionsSnapshot<AboutUsPageInfo> aboutUsPageInfo, IToastNotification toastNotification, IMailService mailService)
-        //IArticleService articleService,
-        //ITeamService teamService,
-        //IBusinessService businessService,
-        //IProjectCategoryService projectService,
-        //IOptionsSnapshot<SliderPageInfo> sliderPageInfo))
         {
-            //_sliderPageInfo = sliderPageInfo.Value;
-            //_articleService = articleService;
-            //_teamService = teamService;
-            //_businessService = businessService;
-            //_projectService = projectService;
+            
             _aboutUsPageInfo = aboutUsPageInfo.Value;
             _mailService = mailService;
             _toastNotification = toastNotification;
@@ -76,6 +62,12 @@ namespace Damplus.Mvc.Controllers
             });
         }
         [HttpGet]
+        [Route("Onlaynmuraciet")]
+        public IActionResult Online()
+        {
+            return View();
+        }
+        [HttpGet]
         [Route("Elaqe")]
         public IActionResult Contact()
         {
@@ -83,11 +75,11 @@ namespace Damplus.Mvc.Controllers
         }
         [Route("Elaqe")]
         [HttpPost]
-        public IActionResult Contact(MailViewModel model)
+        public IActionResult Contact(EmailSendDto model)
         {
             if (ModelState.IsValid)
             {
-                var result = _mailService.SendContactEmail(model.EmailSendDto);
+                var result = _mailService.SendContactEmail(model);
                 _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions
                 {
                     Title = "Uğurlu Əməliyyat",
@@ -97,7 +89,7 @@ namespace Damplus.Mvc.Controllers
                 });
                 return View();
             }
-            return View(model.EmailSendDto);
+            return View(model);
         }
     }
 }
