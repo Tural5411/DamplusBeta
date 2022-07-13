@@ -1153,9 +1153,7 @@ textarea.form-control {
     }
 
         .userprofile .userpic .userpicimg {
-            height: auto;
-            width: 100%;
-            border-radius: 100%;
+            width:70%
         }
 
 .username {
@@ -1223,9 +1221,9 @@ textarea.form-control {
     }
 
     .userprofile.small .userpic .userpicimg {
-        min-height: 100%;
-        width: 100%;
-        border-radius: 100%;
+        width: 40px;
+        height: 36px;
+        border-radius: 50%;
     }
 
     .userprofile.small .username {

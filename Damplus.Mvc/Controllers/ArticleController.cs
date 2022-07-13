@@ -25,7 +25,7 @@ namespace Damplus.Mvc.Controllers
         }
         [Route("Bloq")]
         [HttpGet]
-        public async Task<IActionResult> Index(int? categoryId,int currentPage=1,int pageSize=1,bool isAscending=false)
+        public async Task<IActionResult> Index(int? categoryId,int currentPage=1,int pageSize=6,bool isAscending=false)
         {
             var articleResult = await (categoryId == null
                 ? _articleService.GetAllByPaging(null, currentPage, pageSize, isAscending)
