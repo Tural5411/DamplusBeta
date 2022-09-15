@@ -24,14 +24,14 @@
                                 <img src="~/img/@item.Photo" alt="@item.Name | Damplus">
                             </div><!-- /.portfolio-img -->
                         <div class="portfolio__content">
-                                <h4 class="portfolio__title"><a href="#">@item.Name</a></h4>
+                                <h4 class="portfolio__title"><a href="/Portfolio/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id">@item.Name</a></h4>
                                 <!-- /.portfolio-cat -->
                             <p class="portfolio__desc">
                                     We understand that data is greatest asset when it comes to analyzing and
                                     optimizing your supply chain performance.
                                 </p>
-                                <a href="projects-single-project.html" class="btn btn__loadMore">
-                                    <span>Explore More</span><i class="icon-arrow-right"></i>
+                                <a href="/Portfolio/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id" class="btn btn__loadMore">
+                                    <span>Ətraflı</span><i class="icon-arrow-right"></i>
                                 </a>
                             </div><!-- /.portfolio-content -->
                     </div>
