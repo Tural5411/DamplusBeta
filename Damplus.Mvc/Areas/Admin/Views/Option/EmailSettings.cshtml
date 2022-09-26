@@ -5,6 +5,20 @@
     ViewBag.Title = "E-Posta Ayarları";
 
 }
+
+<div class="row">
+    <div class="col-md-12  header-wrapper">
+        <h1 class="page-header">Admin - Email əməliyyatı</h1>
+        <p class="page-subtitle">Burada hansi gmail hesabınıza müraciət ediləcək onları qeyd edə bilərsiniz.</p>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<ol class="breadcrumb">
+    <li><a href="/Admin">Admin</a></li>
+    <li class="active">Email əməliyyatı</li>
+</ol>
 <div class="row card-shadow">
     <div class="col-lg-8 offset-lg-2">
         <div class="card mt-1 mb-1">
@@ -22,7 +36,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label asp-for="Port"></label>
-                            <input type="number" class="form-control" asp-for="Port"  />
+                            <input type="number" class="form-control" asp-for="Port" />
                             <span class="text-danger" asp-validation-for="Port"></span>
                         </div>
                         <div class="form-group col-md-6">
@@ -32,7 +46,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label asp-for="SenderEmail"></label>
-                            <input type="text" class="form-control" asp-for="SenderEmail"  />
+                            <input type="text" class="form-control" asp-for="SenderEmail" />
                             <span class="text-danger" asp-validation-for="SenderEmail"></span>
                         </div>
                         <div class="form-group col-md-6">
@@ -42,7 +56,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label asp-for="Password"></label>
-                            <input type="password" class="form-control" asp-for="Password"  />
+                            <input type="password" class="form-control" asp-for="Password" />
                             <span class="text-danger" asp-validation-for="Password"></span>
                         </div>
                         <div class="form-group col-md-6">
