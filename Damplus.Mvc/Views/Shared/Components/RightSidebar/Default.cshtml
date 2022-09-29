@@ -30,7 +30,7 @@
                 {
     <div class="widget-post-item">
         <div class="widget__post-img">
-            <a href="/Bloq/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id"><img src="~/img/@item.ThumbNail" alt="@item.Title"></a>
+            <a href="/Bloq/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id"><img data-src="~/img/@item.ThumbNail" class="lazyload" alt="@item.Title"></a>
         </div><!-- /.widget-post-img -->
         <div class="widget__post-content">
             <span class="widget__post-date">@item.CreatedDate.ToShortDateString()</span>

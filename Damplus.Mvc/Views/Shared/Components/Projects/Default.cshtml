@@ -21,7 +21,7 @@
                     {
                         <div class="portfolio-item">
                             <div class="portfolio__img">
-                                <img src="~/img/@item.Photo" alt="@item.Name | Damplus">
+                                <img data-src="~/img/@item.Photo" alt="@item.Name | Damplus" class="lazyload">
                             </div><!-- /.portfolio-img -->
                         <div class="portfolio__content">
                                 <h4 class="portfolio__title"><a href="/Portfolio/@Url.FriendlyUrlHelper(item.Name).ToLower()/@item.Id">@item.Name</a></h4>

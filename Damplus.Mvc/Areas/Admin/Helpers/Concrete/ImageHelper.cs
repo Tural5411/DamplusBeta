@@ -13,6 +13,9 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using ImageProcessor;
+using ImageProcessor.Imaging.Formats;
+using ImageProcessor.Plugins.WebP.Imaging.Formats;
 
 namespace Damplus.Mvc.Areas.Admin.Helpers.Concrete
 {
@@ -32,22 +35,20 @@ namespace Damplus.Mvc.Areas.Admin.Helpers.Concrete
 
         public async Task<string> UploadImageV2(IFormFile file)
         {
-            string wwwRootPath = _env.WebRootPath;
-            string fileName = Path.GetFileNameWithoutExtension(file.FileName);
-            string extension = Path.GetExtension(file.FileName);
+            var wwwRootPath = _env.WebRootPath;
+            var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+            var extension = Path.GetExtension(file.FileName);
             var name = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            string path = Path.Combine(wwwRootPath + "/img/", fileName);
-            using (var fileStream = new FileStream(path, FileMode.Create))
-            {
-                await file.CopyToAsync(fileStream);
-            }
+            var path = Path.Combine(wwwRootPath + "/img/", fileName);
+            await using var fileStream = new FileStream(path, FileMode.Create);
+            await file.CopyToAsync(fileStream);
             return name;
         }
         public IDataResult<ImageDeletedDto> ImageDelete(string PictureName)
         {
 
             var fileToDelete = Path.Combine($"{_wwwroot}/{imgFolder}", PictureName);
-            if (System.IO.Directory.Exists(fileToDelete))
+            if (Directory.Exists(fileToDelete))
             {
                 var fileInfo = new FileInfo(fileToDelete);
                 var imageDeletedDto = new ImageDeletedDto
@@ -57,16 +58,12 @@ namespace Damplus.Mvc.Areas.Admin.Helpers.Concrete
                     Path = fileInfo.FullName,
                     Size = fileInfo.Length
                 };
-                System.IO.Directory.Delete(fileToDelete);
+                Directory.Delete(fileToDelete);
                 return new DataResult<ImageDeletedDto>(ResultStatus.Succes, imageDeletedDto);
             }
             return new DataResult<ImageDeletedDto>(ResultStatus.Error, "Şəkil Tapılmadı", null);
         }
-
-        //public async Task<string> UploadImage(string name, IFormFile pictureFile, PictureType pictureType, string folderName = null)
-        //{
-               
-        //}
+        
 
         public async Task<IDataResult<ImageUploadedDto>> UploadImage(string name, IFormFile pictureFile, PictureType pictureType, string folderName = null)
         {
@@ -74,15 +71,24 @@ namespace Damplus.Mvc.Areas.Admin.Helpers.Concrete
             string wwwRootPath = _env.WebRootPath;
             string fileName = Path.GetFileNameWithoutExtension(pictureFile.FileName);
             string extension = Path.GetExtension(pictureFile.FileName);
-            name = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            name = fileName = fileName + DateTime.Now.ToString("yymmssfff") + ".webp";
             string path = Path.Combine(wwwRootPath + "/img/", fileName);
+
             using (var fileStream = new FileStream(path, FileMode.Create))
             {
-                await pictureFile.CopyToAsync(fileStream);
+                using (ImageFactory imageFactory = new ImageFactory(preserveExifData: false))
+                {
+                    imageFactory.Load(pictureFile.OpenReadStream())
+                        .Format(new WebPFormat())
+                        .Quality(80)
+                        .Save(fileStream);
+                }
             }
+
             //Insert record
             string message = pictureType == PictureType.User ? $"{name} adlı istifadəçinin şəkli uğurla yükləndi."
                     : $"{name} adlı məqalənin şəkli uğurla yükləndi.";
+
             return new DataResult<ImageUploadedDto>(ResultStatus.Succes, message, new ImageUploadedDto
             {
                 FullName =name,

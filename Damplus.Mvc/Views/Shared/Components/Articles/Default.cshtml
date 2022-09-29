@@ -19,7 +19,7 @@
                     <div class="blog-item">
                         <div class="blog__img">
                             <a href="/Bloq/@Url.FriendlyUrlHelper(item.Title).ToLower()/@item.Id">
-                                <img src="~/img/@item.ThumbNail" alt="@item.Title">
+                                <img class="lazyload" data-src="~/img/@item.ThumbNail" alt="@item.Title">
                             </a>
                         </div><!-- /.blog-img -->
                         <div class="blog__content">

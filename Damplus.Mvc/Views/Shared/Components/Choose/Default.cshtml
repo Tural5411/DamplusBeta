@@ -11,19 +11,20 @@
             <div class="col-lg-6">
                 <div class="section-title mb-50">
                     <h2 style="font-size: 43px !important">@item.Header</h2>
-                    <img src="~/Damplus/img/bg/circle-line-w.png" alt="circle">
+                    <img data-src="~/Damplus/img/bg/circle-line-w.png" class="lazyload" alt="circle">
                 </div>
-                <p>@item.ContentFirst
-                    @item.ContentSecond
-                </p>
+                <p>
+                    @item.ContentFirst
+                @item.ContentSecond
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <div class="s-d-img p-relative">
+                <img class="lazyload" data-src="~/Damplus/img/bg/video-img.png" alt="img">
+                <a href="https://www.youtube.com/watch?v=vKSA_idPZkc" class="video-i popup-video"> <img data-src="~/Damplus/img/bg/play-icon.png" alt="img" class="active-icon lazyload"></a>
             </div>
-            <div class="col-lg-6">
-                <div class="s-d-img p-relative">
-                    <img src="~/Damplus/img/bg/video-img.png" alt="img">
-                    <a href="https://www.youtube.com/watch?v=vKSA_idPZkc" class="video-i popup-video"> <img src="~/Damplus/img/bg/play-icon.png" alt="img" class="active-icon"></a>
-                </div>
 
-            </div>
         </div>
     </div>
+</div>
 </section>
