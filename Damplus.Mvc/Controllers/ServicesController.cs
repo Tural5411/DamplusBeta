@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Damplus.Mvc.Models;
 using Damplus.Services.Abstract;
 using Damplus.Shared.Utilities.Results.ComplexTypes;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Damplus.Mvc.Controllers

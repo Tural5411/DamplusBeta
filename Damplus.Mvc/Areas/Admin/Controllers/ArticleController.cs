@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using NToastNotify;
 using Damplus.Shared.Utilities.Results.ComplexTypes;
 using Damplus.Entities.ComplexTypes;
@@ -12,8 +11,6 @@ using Damplus.Mvc.Areas.Admin.Helpers.Abstract;
 using Damplus.Mvc.Areas.Admin.Models;
 using Damplus.Services.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;

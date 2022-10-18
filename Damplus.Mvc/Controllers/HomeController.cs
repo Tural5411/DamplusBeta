@@ -2,14 +2,9 @@
 using Damplus.Entities.DTOs;
 using Damplus.Mvc.Models;
 using Damplus.Services.Abstract;
-using Damplus.Shared.Utilities.Results.ComplexTypes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using NToastNotify;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Damplus.Mvc.Controllers
