@@ -25,8 +25,8 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
         [Obsolete]
         private IHostingEnvironment _environment;
 
-
-        public BusinessController(IFileHelper fileHelper, IHostingEnvironment environment,IBusinessService businessService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
+        [Obsolete]
+        public BusinessController(IFileHelper fileHelper, IHostingEnvironment environment, IBusinessService businessService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
         {
             _businessService = businessService;
             _toastNotification = toastNotification;
@@ -40,7 +40,7 @@ namespace Damplus.Mvc.Areas.Admin.Controllers
             return View(result.Data);
         }
         [HttpGet]
-        public async Task<IActionResult> Add()
+        public IActionResult Add()
         {
             return View();
         }
