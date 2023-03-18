@@ -1,7 +1,9 @@
 ﻿@using Microsoft.Extensions.Options
 @using Damplus.Entities.Concrete
 @inject IOptionsSnapshot<WebsiteInfo> choose
-@{ var item = choose.Value; }
+@{
+    var item = choose.Value;
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +19,16 @@
           href="https://fonts.googleapis.com/css?family=Barlow:400,500,600,700%7cRoboto:400,500,700&amp;display=swap">
     <link rel="stylesheet" href="~/damplus/assets/css/libraries.css">
     <link rel="stylesheet" href="~/damplus/assets/css/style.css">
+    <meta name="google-site-verification" content="s4F-eZeJLlNqDSmTguRPM0nufDxozw-_VZD5UQN2HVw" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DNKJED14HF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-DNKJED14HF');
+    </script>
 </head>
 
 <body>
@@ -28,7 +40,6 @@
             Header
         =========================== -->
         @await Component.InvokeAsync("Header") <!-- /.Header -->
-
         @RenderBody()
 
         <!-- ========================
@@ -56,6 +67,6 @@
     <script src="~/damplus/assets/js/plugins.js"></script>
     <script src="~/damplus/assets/js/main.js"></script>
     <script src="~/js/lazysizes.min.js"></script>
-@await Component.InvokeAsync("NToastNotify")
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 </html>
